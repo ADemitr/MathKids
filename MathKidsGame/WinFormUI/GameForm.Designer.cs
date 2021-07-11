@@ -31,6 +31,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.buttonNo = new System.Windows.Forms.Button();
             this.buttonYes = new System.Windows.Forms.Button();
+            this.timeElapsedProgressBar = new System.Windows.Forms.ProgressBar();
             this.SuspendLayout();
             // 
             // label1
@@ -65,11 +66,19 @@
             this.buttonYes.UseVisualStyleBackColor = true;
             this.buttonYes.Click += new System.EventHandler(this.buttonYes_Click);
             // 
+            // progressBar2
+            // 
+            this.timeElapsedProgressBar.Location = new System.Drawing.Point(77, 221);
+            this.timeElapsedProgressBar.Name = "progressBar2";
+            this.timeElapsedProgressBar.Size = new System.Drawing.Size(753, 33);
+            this.timeElapsedProgressBar.TabIndex = 4;
+            // 
             // GameForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(18F, 45F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(927, 543);
+            this.Controls.Add(this.timeElapsedProgressBar);
             this.Controls.Add(this.buttonYes);
             this.Controls.Add(this.buttonNo);
             this.Controls.Add(this.label1);
@@ -87,6 +96,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button buttonNo;
         private System.Windows.Forms.Button buttonYes;
+        private System.Windows.Forms.ProgressBar timeElapsedProgressBar;
     }
 }
 

@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Media;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,6 +21,8 @@ namespace WinFormUI
         private Color _neuturalColor = Color.LightGray;
         private TaskScheduler _guiTaskScheduler;
         private SoundPlayer _myPlayer = new SoundPlayer();
+        private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(5);
+        private CancellationTokenSource _ctsForTime;
 
         public GameForm()
         {
@@ -39,6 +42,33 @@ namespace WinFormUI
             buttonNo.Enabled = true;
             buttonYes.BackColor = _neuturalColor;
             buttonNo.BackColor = _neuturalColor;
+            timeElapsedProgressBar.Value = 0;
+
+            if(_ctsForTime != null)
+            {
+                _ctsForTime.Cancel();
+            }
+            _ctsForTime = new CancellationTokenSource();
+            Task.Run(() => CountDown(_timeForMathTask, _ctsForTime));
+
+        }
+
+        private async void CountDown(TimeSpan span, CancellationTokenSource cts)
+        {
+            int progress = 0;
+            int parts = 20;
+            TimeSpan dt = span / parts;
+
+            for(int i=0; i<parts; i++)
+            {
+                progress += 100 / parts;
+                await Task.Delay(dt);
+                if (cts.IsCancellationRequested == false)
+                {
+                    await Task.Run(() => { })
+                        .ContinueWith(t => timeElapsedProgressBar.Value = progress, _guiTaskScheduler);
+                }
+            }
         }
 
         private void CheckAnswer(bool isCorrectAnswer, Button button)
