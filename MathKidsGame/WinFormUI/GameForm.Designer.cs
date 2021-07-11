@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.descriptionLabel = new System.Windows.Forms.Label();
             this.buttonNo = new System.Windows.Forms.Button();
             this.buttonYes = new System.Windows.Forms.Button();
             this.timeElapsedProgressBar = new System.Windows.Forms.ProgressBar();
@@ -36,13 +36,13 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(77, 76);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(400, 86);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "2 + 2 * 2 = 8";
+            this.descriptionLabel.AutoSize = true;
+            this.descriptionLabel.Font = new System.Drawing.Font("Segoe UI", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.descriptionLabel.Location = new System.Drawing.Point(77, 76);
+            this.descriptionLabel.Name = "label1";
+            this.descriptionLabel.Size = new System.Drawing.Size(400, 86);
+            this.descriptionLabel.TabIndex = 0;
+            this.descriptionLabel.Text = "2 + 2 * 2 = 8";
             // 
             // buttonNo
             // 
@@ -81,7 +81,7 @@
             this.Controls.Add(this.timeElapsedProgressBar);
             this.Controls.Add(this.buttonYes);
             this.Controls.Add(this.buttonNo);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.descriptionLabel);
             this.Font = new System.Drawing.Font("Segoe UI", 24F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.Margin = new System.Windows.Forms.Padding(7);
             this.Name = "GameForm";
@@ -93,7 +93,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.Button buttonNo;
         private System.Windows.Forms.Button buttonYes;
         private System.Windows.Forms.ProgressBar timeElapsedProgressBar;

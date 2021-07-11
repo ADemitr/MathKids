@@ -1,13 +1,8 @@
 ﻿using MathKidsCore;
 using MathKidsCore.Model;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Media;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,17 +11,18 @@ namespace WinFormUI
 {
     public partial class GameForm : Form
     {
-        private IMathTaskGenerator _mathTaskGenerator = new HardCodeGanerator();
-        private MathTask _correntMathTask;
+        private GameController _gameController = new GameController();
         private Color _neuturalColor = Color.LightGray;
         private TaskScheduler _guiTaskScheduler;
         private SoundPlayer _myPlayer = new SoundPlayer();
-        private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(5);
-        private CancellationTokenSource _ctsForTime;
+
 
         public GameForm()
         {
             InitializeComponent();
+
+            _gameController.OnCountDown += (o, progress) => Task.Run(()=> { })
+                .ContinueWith(t => timeElapsedProgressBar.Value = progress, _guiTaskScheduler);
 
             _guiTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
@@ -35,45 +31,18 @@ namespace WinFormUI
 
         private void LoadNextMathTask()
         {
-            _correntMathTask = _mathTaskGenerator.Next();
-            label1.Text = _correntMathTask.Description;
+            descriptionLabel.Text = _gameController.GenerateMathTaskAndGetDescription();
 
             buttonYes.Enabled = true;
             buttonNo.Enabled = true;
             buttonYes.BackColor = _neuturalColor;
             buttonNo.BackColor = _neuturalColor;
             timeElapsedProgressBar.Value = 0;
-
-            if(_ctsForTime != null)
-            {
-                _ctsForTime.Cancel();
-            }
-            _ctsForTime = new CancellationTokenSource();
-            Task.Run(() => CountDown(_timeForMathTask, _ctsForTime));
-
         }
 
-        private async void CountDown(TimeSpan span, CancellationTokenSource cts)
+        private void CheckAnswer(bool userAnswer, Button button)
         {
-            int progress = 0;
-            int parts = 20;
-            TimeSpan dt = span / parts;
-
-            for(int i=0; i<parts; i++)
-            {
-                progress += 100 / parts;
-                await Task.Delay(dt);
-                if (cts.IsCancellationRequested == false)
-                {
-                    await Task.Run(() => { })
-                        .ContinueWith(t => timeElapsedProgressBar.Value = progress, _guiTaskScheduler);
-                }
-            }
-        }
-
-        private void CheckAnswer(bool isCorrectAnswer, Button button)
-        {
-            bool solvedCorrect = isCorrectAnswer == _correntMathTask.IsCorrectAnswer;
+            bool solvedCorrect = _gameController.CheckAnswer(userAnswer);
 
             string soundFile = solvedCorrect ? @"C:\Users\dmitr\Downloads\Correct.wav" : @"C:\Users\dmitr\Downloads\Wrong3.wav";
             _myPlayer.SoundLocation = soundFile;
