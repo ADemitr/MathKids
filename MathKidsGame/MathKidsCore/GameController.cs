@@ -1,4 +1,5 @@
-﻿using MathKidsCore.Model;
+﻿using MathKidsCore.MathTaskGeneration;
+using MathKidsCore.Model;
 using System;
 using System.Threading;
 using System.Threading.Tasks;
@@ -8,9 +9,9 @@ namespace MathKidsCore
     public class GameController
     {
         public EventHandler<int> OnCountDown;
-        private IMathTaskGenerator _mathTaskGenerator = new HardCodeGanerator();
+        private IMathTaskGenerator _mathTaskGenerator = new TwoNumbersSumMathTaskGen(new Random(), 0, 50);
         private MathTask _correntMathTask;
-        private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(5);
+        private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(2.5);
         private CancellationTokenSource _ctsForTime;
 
         public string GenerateMathTaskAndGetDescription()
