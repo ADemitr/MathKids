@@ -24,6 +24,9 @@ namespace WinFormUI
             _gameController.OnCountDown += (o, progress) => Task.Run(()=> { })
                 .ContinueWith(t => timeElapsedProgressBar.Value = progress, _guiTaskScheduler);
 
+            _gameController.OnTimeForMathTaskUp += (o, e) => Task.Run(() => { })
+                .ContinueWith(t => PlayScenarioTimeForMathTaskIsUp(), _guiTaskScheduler);
+
             _guiTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
 
             LoadNextMathTask();
@@ -40,10 +43,8 @@ namespace WinFormUI
             timeElapsedProgressBar.Value = 0;
         }
 
-        private void CheckAnswer(bool userAnswer, Button button)
+        private void CheckAnswer(bool solvedCorrect, Button button)
         {
-            bool solvedCorrect = _gameController.CheckAnswer(userAnswer);
-
             string soundFile = solvedCorrect ? @"C:\Users\dmitr\Downloads\Correct.wav" : @"C:\Users\dmitr\Downloads\Wrong3.wav";
             _myPlayer.SoundLocation = soundFile;
             _myPlayer.Play();
@@ -58,8 +59,23 @@ namespace WinFormUI
                 .ContinueWith(t => LoadNextMathTask(), _guiTaskScheduler);
         }
 
-        private void buttonYes_Click(object sender, EventArgs e) => CheckAnswer(true, (Button)sender);
+        private void PlayScenarioTimeForMathTaskIsUp()
+        {
+            timeElapsedProgressBar.Value = 100;
+            timeElapsedProgressBar.Value = 99;
+            timeElapsedProgressBar.Value = 100;
+            timeElapsedProgressBar.Style = ProgressBarStyle.Blocks;
+            buttonYes.BackColor = Color.Red;
+            buttonNo.BackColor = Color.Red;
+            CheckAnswer(false, buttonYes);
+        }
 
-        private void buttonNo_Click(object sender, EventArgs e) => CheckAnswer(false, (Button)sender);
+        private void buttonYes_Click(object sender, EventArgs e) =>
+            CheckAnswer(_gameController.CheckAnswerAndCancelCountDown(true), (Button)sender);
+
+        private void buttonNo_Click(object sender, EventArgs e) => 
+            CheckAnswer(_gameController.CheckAnswerAndCancelCountDown(false), (Button)sender);
+
+
     }
 }
