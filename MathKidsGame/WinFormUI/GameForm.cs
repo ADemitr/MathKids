@@ -1,10 +1,8 @@
 ﻿using MathKidsCore;
-using MathKidsCore.Model;
 using System;
 using System.Drawing;
 using System.IO;
 using System.Media;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -22,7 +20,7 @@ namespace WinFormUI
         {
             InitializeComponent();
 
-            _gameController.OnCountDown += (o, progress) => Task.Run(()=> { })
+            _gameController.OnCountDown += (o, progress) => Task.Run(() => { })
                 .ContinueWith(t => timeElapsedProgressBar.Value = progress, _guiTaskScheduler);
 
             _guiTaskScheduler = TaskScheduler.FromCurrentSynchronizationContext();
@@ -47,8 +45,6 @@ namespace WinFormUI
 
             Stream soundStream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
             _myPlayer.Stream = soundStream;
-            //string soundFile = solvedCorrect ?  @"Resources\Correct.wav" : @"Resources\Wrong3.wav";
-            //_myPlayer.SoundLocation = soundFile;
             _myPlayer.Play();
 
             Color color = solvedCorrect ? Color.Green : Color.Red;
