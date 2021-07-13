@@ -12,11 +12,20 @@ namespace MathKidsCore
         public EventHandler OnTimeForMathTaskUp;
         public int MaxInARow { get; private set; } = 0;
         public int CurrentInARow { get; private set; } = 0;
-        private IMathTaskGenerator _mathTaskGenerator = new TwoNumbersSumMathTaskGen(new Random(), 0, 50);
+        private IMathTaskGenerator _mathTaskGenerator;
         private MathTask _correntMathTask;
         private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(2.5);
         private CancellationTokenSource _ctsForTime;
 
+
+        public GameController()
+        {
+            Random r = new Random();
+            IMathTaskGenerator mathTaskGeneratorSum = new TwoNumbersSumMathTaskGen(r, 0, 50);
+            IMathTaskGenerator mathTaskGeneratorDif = new TwoNumbersMinusMathTaskGen(r, 0, 100);
+            IMathTaskGenerator mathTaskCombinator = new MathTaskCombinator(r, mathTaskGeneratorSum, mathTaskGeneratorDif);
+            _mathTaskGenerator = mathTaskCombinator;
+        }
 
         public string GenerateMathTaskAndGetDescription()
         {

@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace MathKidsCore
+namespace MathKidsCore.MathTaskGeneration
 {
     public class HardCodeGanerator : IMathTaskGenerator
     {

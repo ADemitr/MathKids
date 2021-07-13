@@ -1,6 +1,6 @@
 ﻿using MathKidsCore.Model;
 
-namespace MathKidsCore
+namespace MathKidsCore.MathTaskGeneration
 {
     public interface IMathTaskGenerator
     {
