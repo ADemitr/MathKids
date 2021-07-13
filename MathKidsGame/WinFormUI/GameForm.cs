@@ -2,6 +2,7 @@
 using MathKidsCore.Model;
 using System;
 using System.Drawing;
+using System.IO;
 using System.Media;
 using System.Threading;
 using System.Threading.Tasks;
@@ -44,8 +45,10 @@ namespace WinFormUI
         {
             bool solvedCorrect = _gameController.CheckAnswer(userAnswer);
 
-            string soundFile = solvedCorrect ? @"C:\Users\dmitr\Downloads\Correct.wav" : @"C:\Users\dmitr\Downloads\Wrong3.wav";
-            _myPlayer.SoundLocation = soundFile;
+            Stream soundStream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
+            _myPlayer.Stream = soundStream;
+            //string soundFile = solvedCorrect ?  @"Resources\Correct.wav" : @"Resources\Wrong3.wav";
+            //_myPlayer.SoundLocation = soundFile;
             _myPlayer.Play();
 
             Color color = solvedCorrect ? Color.Green : Color.Red;
