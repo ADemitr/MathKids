@@ -41,6 +41,8 @@ namespace WinFormUI
             buttonYes.BackColor = _neuturalColor;
             buttonNo.BackColor = _neuturalColor;
             timeElapsedProgressBar.Value = 0;
+            labelMaxInARow.Text = "Максимум правильных ответов подряд: " + _gameController.MaxInARow.ToString();
+            buttonCurrentinARow.Text = _gameController.CurrentInARow.ToString();
         }
 
         private void CheckAnswer(bool solvedCorrect, Button button)

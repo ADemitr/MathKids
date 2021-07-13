@@ -10,11 +10,13 @@ namespace MathKidsCore
     {
         public EventHandler<int> OnCountDown;
         public EventHandler OnTimeForMathTaskUp;
-
+        public int MaxInARow { get; private set; } = 0;
+        public int CurrentInARow { get; private set; } = 0;
         private IMathTaskGenerator _mathTaskGenerator = new TwoNumbersSumMathTaskGen(new Random(), 0, 50);
         private MathTask _correntMathTask;
         private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(2.5);
         private CancellationTokenSource _ctsForTime;
+
 
         public string GenerateMathTaskAndGetDescription()
         {
@@ -29,7 +31,13 @@ namespace MathKidsCore
         public bool CheckAnswerAndCancelCountDown(bool userAnswer)
         {
             _ctsForTime?.Cancel();
-            return _correntMathTask.IsCorrectAnswer == userAnswer;
+
+            bool isRightAnswer = _correntMathTask.CorrectAnswer == userAnswer;
+
+            CurrentInARow = isRightAnswer ? CurrentInARow + 1 : 0;
+            MaxInARow = Math.Max(CurrentInARow, MaxInARow);
+
+            return isRightAnswer;
         }
 
         private async void CountDown(TimeSpan span, CancellationTokenSource cts)

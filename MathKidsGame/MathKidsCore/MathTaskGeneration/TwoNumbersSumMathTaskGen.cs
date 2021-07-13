@@ -38,7 +38,7 @@ namespace MathKidsCore.MathTaskGeneration
             return new MathTask()
             {
                 Description = $"{ a } + { b } = { sum }",
-                IsCorrectAnswer = shouldEquationBeCorrect
+                CorrectAnswer = shouldEquationBeCorrect
             };
         }
     }
