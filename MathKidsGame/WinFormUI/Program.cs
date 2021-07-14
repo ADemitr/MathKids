@@ -25,10 +25,11 @@ namespace WinFormUI
 
             using (var scope = container.BeginLifetimeScope())
             {
-                var meal = scope.Resolve<GameForm>();
+                var gameForm = scope.Resolve<GameForm>();
+                Application.Run(gameForm);
             }
 
-            Application.Run(new GameForm());
+
         }
     }
 }
