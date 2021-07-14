@@ -1,3 +1,4 @@
+﻿using Autofac;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,16 @@ namespace WinFormUI
             Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            var builder = new ContainerBuilder();
+            builder.RegisterType<GameForm>();
+            var container = builder.Build();
+
+            using (var scope = container.BeginLifetimeScope())
+            {
+                var meal = scope.Resolve<GameForm>();
+            }
+
             Application.Run(new GameForm());
         }
     }
