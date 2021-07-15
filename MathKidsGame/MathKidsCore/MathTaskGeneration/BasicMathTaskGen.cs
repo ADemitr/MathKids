@@ -19,7 +19,6 @@ namespace MathKidsCore.MathTaskGeneration
         public MathTask Next()
         {
             GenerateNumbers(out int a, out int b);
-            RandomlyExchange(ref a, ref b);
             int result = GetResult(a, b);
 
             bool isCorrectEquation = GenerateRandomCorrectness();
@@ -65,7 +64,7 @@ namespace MathKidsCore.MathTaskGeneration
 
         private bool GenerateRandomCorrectness() => _random.NextDouble() < 0.5;
 
-        private void RandomlyExchange(ref int a, ref int b)
+        protected void RandomlyExchange(ref int a, ref int b)
         {
             if (_random.NextDouble() < 0.5)
             {

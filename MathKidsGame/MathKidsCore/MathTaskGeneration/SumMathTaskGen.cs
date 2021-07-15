@@ -11,6 +11,7 @@ namespace MathKidsCore.MathTaskGeneration
         {
             a = _random.Next(0, _maxResult);
             b = _random.Next(0, _maxResult - a);
+            RandomlyExchange(ref a, ref b);
         }
 
         protected override int GetResult(int a, int b) => a + b;
