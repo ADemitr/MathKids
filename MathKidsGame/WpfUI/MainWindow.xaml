@@ -29,7 +29,8 @@
                FontSize="36" Margin="0 20 0 0 "
                Grid.Column="1" Grid.Row="0"/>
 
-        <TextBlock x:Name="Description" Text="Условие задачи" FontSize="36"
+        <TextBlock x:Name="Description" Text="{ Binding Description }" 
+                   FontSize="72" HorizontalAlignment="Center"
                Grid.Column="1" Grid.Row="1"/>
 
         <Grid Grid.Row="2" Grid.Column="1">
@@ -40,14 +41,12 @@
             </Grid.ColumnDefinitions>
 
             <Button Content="No" FontSize="48"
+                    Command="{Binding SayNo}"
                      Grid.Column="0" Grid.Row="0"/>
 
             <Button Content="Yes" FontSize="48"
+                     Command="{Binding SayYes}"
                      Grid.Column="2" Grid.Row="0"/>
-
         </Grid>
-
-
-
     </Grid>
 </Window>
