@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30204.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WinFormUI", "WinFormUI\WinFormUI.csproj", "{7D4CFF01-49BC-4843-AD84-86F3204D2D87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormUI", "WinFormUI\WinFormUI.csproj", "{7D4CFF01-49BC-4843-AD84-86F3204D2D87}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MathKidsCore", "MathKidsCore\MathKidsCore.csproj", "{1CB63E38-7C5A-4024-A0E5-27B137DB719E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathKidsCore", "MathKidsCore\MathKidsCore.csproj", "{1CB63E38-7C5A-4024-A0E5-27B137DB719E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGUI", "WpfGUI\WpfGUI.csproj", "{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{1CB63E38-7C5A-4024-A0E5-27B137DB719E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB63E38-7C5A-4024-A0E5-27B137DB719E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB63E38-7C5A-4024-A0E5-27B137DB719E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

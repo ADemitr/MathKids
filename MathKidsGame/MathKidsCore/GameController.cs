@@ -55,12 +55,12 @@ namespace MathKidsCore
         {
             int progress = 0;
             int parts = 10;
-            TimeSpan dt = span / parts;
+            int dt_msec = (int)span.TotalMilliseconds / parts;
 
             for (int i = 0; i < parts; i++)
             {
                 progress += 100 / parts;
-                await Task.Delay(dt);
+                await Task.Delay(dt_msec);
                 if (cts.IsCancellationRequested == false)
                 {
                     OnCountDown?.Invoke(this, progress);
