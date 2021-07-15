@@ -3,43 +3,16 @@ using System;
 
 namespace MathKidsCore.MathTaskGeneration
 {
-    public class SumMathTaskGen : IMathTaskGenerator
+    public class SumMathTaskGen : BasicMathTaskGen
     {
-        private int _minNumber = 0;
-        private int _maxNumber = 100;
-        private Random _random = new Random();
+        public SumMathTaskGen(Random r, int maxResult) : base(r, "+", maxResult) { }
 
-        public SumMathTaskGen(Random random) => _random = random;
-
-        public SumMathTaskGen(Random random, int minNumber = 0, int maxNumber = 100) : this(random)
+        protected override void GenerateNumbers(out int a, out int b)
         {
-            _minNumber = minNumber;
-            _maxNumber = maxNumber;
+            a = _random.Next(0, _maxResult);
+            b = _random.Next(0, _maxResult - a);
         }
 
-        public MathTask Next()
-        {
-            int a = _random.Next(_minNumber, _maxNumber);
-            int b = _random.Next(_minNumber, _maxNumber);
-            int sum = a + b;
-
-            bool shouldEquationBeCorrect = _random.NextDouble() < 0.5;
-
-            if (shouldEquationBeCorrect == false)
-            {
-                int correction = 0;
-                while (correction == 0)
-                {
-                    correction = _random.Next(-1, 1) + _random.Next(-1, 1) * 10;
-                }
-                sum += correction;
-            }
-
-            return new MathTask()
-            {
-                Description = $"{ a } + { b } = { sum }",
-                CorrectAnswer = shouldEquationBeCorrect
-            };
-        }
+        protected override int GetResult(int a, int b) => a + b;
     }
 }

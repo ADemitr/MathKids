@@ -23,7 +23,7 @@ namespace MathKidsCore
             Random r = new Random();
 
             IMathTaskGenerator mathTaskCombinator = new MathTaskCombinator(r,
-                new SumMathTaskGen(r, 0, 50),
+                new SumMathTaskGen(r, 100),
                 new DiffMathTaskGen(r, 0, 100),
                 new MultiplyMathTaskGenerator(r, 0, 170));
             _mathTaskGenerator = mathTaskCombinator;

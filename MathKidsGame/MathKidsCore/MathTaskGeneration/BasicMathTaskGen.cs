@@ -5,19 +5,21 @@ namespace MathKidsCore.MathTaskGeneration
 {
     public abstract class BasicMathTaskGen : IMathTaskGenerator
     {
+        protected readonly int _maxResult;
         protected readonly Random _random;
         private string _operation;
 
-        public BasicMathTaskGen(Random random, string operation)
+        public BasicMathTaskGen(Random random, string operation, int maxResult)
         {
             _random = random;
             _operation = operation;
+            _maxResult = maxResult;
         }
 
         public MathTask Next()
         {
-            int a = GenerateNumber();
-            int b = GenerateNumber();
+            GenerateNumbers(out int a, out int b);
+            RandomlyExchange(ref a, ref b);
             int result = GetResult(a, b);
 
             bool isCorrectEquation = GenerateRandomCorrectness();
@@ -55,13 +57,22 @@ namespace MathKidsCore.MathTaskGeneration
         protected virtual int GenerateCorrection()
             => _random.Next(-1, 1) + _random.Next(-1, 1) * 10;
 
-        protected abstract int GenerateNumber();
+        protected abstract void GenerateNumbers(out int a, out int b);
         protected abstract int GetResult(int a, int b);
 
         private string GetMathTaskDescription(int a, int b, int result)
-            => $"a { _operation } b = { result }";
+            => $"{ a } { _operation } { b } = { result }";
 
         private bool GenerateRandomCorrectness() => _random.NextDouble() < 0.5;
 
+        private void RandomlyExchange(ref int a, ref int b)
+        {
+            if (_random.NextDouble() < 0.5)
+            {
+                int temp = a;
+                a = b;
+                b = temp;
+            }
+        }
     }
 }
