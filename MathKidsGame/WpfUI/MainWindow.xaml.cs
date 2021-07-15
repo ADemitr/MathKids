@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfGUI
+namespace WpfUI
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
@@ -22,6 +22,7 @@ namespace WpfGUI
     {
         public MainWindow()
         {
+            InitializeComponent();
         }
     }
 }

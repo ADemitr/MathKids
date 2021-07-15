@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormUI", "WinFormUI\WinF
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MathKidsCore", "MathKidsCore\MathKidsCore.csproj", "{1CB63E38-7C5A-4024-A0E5-27B137DB719E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfGUI", "WpfGUI\WpfGUI.csproj", "{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfUI", "WpfUI\WpfUI.csproj", "{78AFE051-90A1-4063-900B-7D18536BD5B5}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{1CB63E38-7C5A-4024-A0E5-27B137DB719E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1CB63E38-7C5A-4024-A0E5-27B137DB719E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1CB63E38-7C5A-4024-A0E5-27B137DB719E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8141EBC7-27E3-4E04-81D8-BCC5B9D0CD76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{78AFE051-90A1-4063-900B-7D18536BD5B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{78AFE051-90A1-4063-900B-7D18536BD5B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{78AFE051-90A1-4063-900B-7D18536BD5B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{78AFE051-90A1-4063-900B-7D18536BD5B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

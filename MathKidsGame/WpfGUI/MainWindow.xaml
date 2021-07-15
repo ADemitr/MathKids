@@ -7,9 +7,9 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
 
-  <Window.DataContext>
-    MainWindowVM
-  </Window.DataContext>
+    <Window.DataContext>
+        <local:MainWindowVM/>
+    </Window.DataContext>
 
   <Grid>
     <Grid.ColumnDefinitions>
@@ -25,7 +25,7 @@
     </Grid.RowDefinitions>
 
     <TextBlock x:Name="Record"
-               Text = "{Binding Record}"
+               Text = "{Binding Record, Mode=OneWay}"
                FontSize="36" Margin="0 20 0 0 "
                Grid.Column="1" Grid.Row="0"/>
 

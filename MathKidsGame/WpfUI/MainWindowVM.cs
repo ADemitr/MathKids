@@ -1,8 +1,8 @@
-﻿using Prism.Mvvm;
+﻿using System.ComponentModel;
 
-namespace WpfGUI
+namespace WpfUI
 {
-    public class MainWindowVM : BindableBase
+    public class MainWindowVM : INotifyPropertyChanged
     {
         private string _record = "Hello World";
         public string Record
@@ -11,5 +11,6 @@ namespace WpfGUI
             set { _record =  value; }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
