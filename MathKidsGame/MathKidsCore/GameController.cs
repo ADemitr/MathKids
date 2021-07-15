@@ -21,9 +21,11 @@ namespace MathKidsCore
         public GameController()
         {
             Random r = new Random();
-            IMathTaskGenerator mathTaskGeneratorSum = new TwoNumbersSumMathTaskGen(r, 0, 50);
-            IMathTaskGenerator mathTaskGeneratorDif = new TwoNumbersMinusMathTaskGen(r, 0, 100);
-            IMathTaskGenerator mathTaskCombinator = new MathTaskCombinator(r, mathTaskGeneratorSum, mathTaskGeneratorDif);
+
+            IMathTaskGenerator mathTaskCombinator = new MathTaskCombinator(r,
+                new SumMathTaskGen(r, 0, 50),
+                new DiffMathTaskGen(r, 0, 100),
+                new MultiplyMathTaskGenerator(r, 0, 170));
             _mathTaskGenerator = mathTaskCombinator;
         }
 

@@ -3,15 +3,15 @@ using System;
 
 namespace MathKidsCore.MathTaskGeneration
 {
-    public class TwoNumbersSumMathTaskGen : IMathTaskGenerator
+    public class SumMathTaskGen : IMathTaskGenerator
     {
         private int _minNumber = 0;
         private int _maxNumber = 100;
         private Random _random = new Random();
 
-        public TwoNumbersSumMathTaskGen(Random random) => _random = random;
+        public SumMathTaskGen(Random random) => _random = random;
 
-        public TwoNumbersSumMathTaskGen(Random random, int minNumber = 0, int maxNumber = 100) : this(random)
+        public SumMathTaskGen(Random random, int minNumber = 0, int maxNumber = 100) : this(random)
         {
             _minNumber = minNumber;
             _maxNumber = maxNumber;
