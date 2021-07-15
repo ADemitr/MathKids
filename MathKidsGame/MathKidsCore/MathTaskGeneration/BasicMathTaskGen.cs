@@ -19,7 +19,8 @@ namespace MathKidsCore.MathTaskGeneration
         public MathTask Next()
         {
             GenerateNumbers(out int a, out int b);
-            int result = GetResult(a, b);
+            int correctResult = GetResult(a, b);
+            int result = correctResult;
 
             bool isCorrectEquation = GenerateRandomCorrectness();
             if (isCorrectEquation == false)
@@ -28,7 +29,7 @@ namespace MathKidsCore.MathTaskGeneration
             }
 
             string mathTaskDescription = GetMathTaskDescription(a, b, result);
-            return new MathTask(mathTaskDescription, isCorrectEquation);
+            return new MathTask(mathTaskDescription, isCorrectEquation, correctResult);
         }
 
         private int GenerateNonZeroCorrection()

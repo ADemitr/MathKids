@@ -43,7 +43,7 @@ namespace MathKidsCore
         {
             _ctsForTime?.Cancel();
 
-            bool isRightAnswer = _correntMathTask.CorrectAnswer == userAnswer;
+            bool isRightAnswer = _correntMathTask.IsCorrectAnswer == userAnswer;
 
             CurrentInARow = isRightAnswer ? CurrentInARow + 1 : 0;
             MaxInARow = Math.Max(CurrentInARow, MaxInARow);
