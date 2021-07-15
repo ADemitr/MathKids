@@ -7,6 +7,7 @@ namespace WpfUI
     public class MainWindowVM : BindableBase
     {
         private GameController _gameController;
+        public string Record => $"Рекорд : { _gameController.MaxInARow }";
         public string Description { get; private set; }
         public DelegateCommand SayYes { get; }
         public DelegateCommand SayNo { get; }
@@ -31,13 +32,8 @@ namespace WpfUI
         {
             Description = _gameController.GenerateMathTaskAndGetDescription();
             RaisePropertyChanged(nameof(Description));
-        }
+            RaisePropertyChanged(nameof(Record));
 
-        private string _record = "Рекорд : 0";
-        public string Record
-        {
-            get { return _record; }
-            set { _record =  value; }
         }
     }
 }
