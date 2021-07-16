@@ -70,6 +70,7 @@ namespace MathKidsCore
             if(cts.IsCancellationRequested == false)
             {
                 OnTimeForMathTaskUp?.Invoke(this, null);
+                CurrentInARow = 0;
             }
         }
     }
