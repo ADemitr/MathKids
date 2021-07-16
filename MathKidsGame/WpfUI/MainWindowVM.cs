@@ -19,6 +19,8 @@ namespace WpfUI
         public DelegateCommand SayYes { get; }
         public DelegateCommand SayNo { get; }
         public bool ButtonsEnabled { get; private set; }
+        public string Answer { get; private set; }
+        public string AnswerColor { get; private set; }
 
         public MainWindowVM()
         {
@@ -31,11 +33,12 @@ namespace WpfUI
                 TimeProgress = progress;
                 RaisePropertyChanged(nameof(TimeProgress));
             };
-            _gameController.OnTimeForMathTaskUp += (o, e) => TimeIsUp();
+            _gameController.OnTimeForMathTaskUp += (o, e) => CheckResult(solvedCorrect: false, timeIsUp: true);
         }
 
         private void NextRound()
         {
+            Answer = string.Empty;
             Description = _gameController.GenerateMathTaskAndGetDescription();
             ButtonsEnabled = true;
 
@@ -43,19 +46,33 @@ namespace WpfUI
             RaisePropertyChanged(nameof(BestScore));
             RaisePropertyChanged(nameof(CurrentScore));
             RaisePropertyChanged(nameof(ButtonsEnabled));
+            RaisePropertyChanged(nameof(Answer));
+
         }
 
-        private void TimeIsUp()
+        private void CheckResult(bool solvedCorrect, bool timeIsUp = false)
         {
-            CheckResult(false);
-        }
+            if(timeIsUp == false)
+            {
+                Answer = solvedCorrect ? "Правильно!" : "Ошибка!";
+                AnswerColor = solvedCorrect ? "Green" : "Red";
+            }
+            else
+            {
+                Answer = "Время истекло!";
+                AnswerColor = "Red";
+            }
 
-        private void CheckResult(bool solvedCorrect)
-        {
             ButtonsEnabled = false;
-            RaisePropertyChanged(nameof(ButtonsEnabled));
 
-            Task.Delay(250)
+            RaisePropertyChanged(nameof(ButtonsEnabled));
+            RaisePropertyChanged(nameof(Answer));
+            RaisePropertyChanged(nameof(AnswerColor));
+
+            _myPlayer.Stream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
+            _myPlayer.Play();
+
+            Task.Delay(500)
                 .ContinueWith(t => NextRound());
         }
     }

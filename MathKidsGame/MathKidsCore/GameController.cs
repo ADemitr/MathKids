@@ -14,7 +14,7 @@ namespace MathKidsCore
         public int CurrentInARow { get; private set; } = 0;
         private IMathTaskGenerator _mathTaskGenerator;
         private MathTask _correntMathTask;
-        private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(2.5);
+        private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(4);
         private CancellationTokenSource _ctsForTime;
 
 

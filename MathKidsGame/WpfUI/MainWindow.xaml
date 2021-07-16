@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfUI"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Супер Счетовод" Height="450" Width="800">
 
     <Window.DataContext>
         <local:MainWindowVM/>
@@ -18,7 +18,7 @@
             <ColumnDefinition Width="50"/>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
-            <RowDefinition/>
+            <RowDefinition Height="80"/>
             <RowDefinition/>
             <RowDefinition Height="40"/>
             <RowDefinition/>
@@ -26,20 +26,25 @@
         </Grid.RowDefinitions>
 
         <DockPanel Grid.Column="1" Grid.Row="0">
-            <TextBlock x:Name="BestScore"
+            <TextBlock x:Name="BestScore" DockPanel.Dock="Left"
                Text = "{Binding BestScore, Mode=OneWay}"
                FontSize="36" Margin="0 20 0 0 " />
 
-            <TextBlock x:Name="CurrentScore"
+            <TextBlock x:Name="CurrentScore" DockPanel.Dock="Right"
                Text = "{Binding CurrentScore, Mode=OneWay}"
                FontSize="36" Margin="0 20 0 0 " HorizontalAlignment="Right"/>
+
         </DockPanel>
 
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
 
-        <TextBlock x:Name="Description" Text="{ Binding Description }" 
-                   FontSize="72" HorizontalAlignment="Center"
-               Grid.Column="1" Grid.Row="1"/>
+            <TextBlock  Text="{Binding Answer}" Foreground="{Binding AnswerColor}" 
+                   FontSize="36" HorizontalAlignment="Center" />
 
+            <TextBlock x:Name="Description" Text="{ Binding Description }" 
+                   FontSize="72" HorizontalAlignment="Center"/>
+        </StackPanel>
+        
         <ProgressBar Grid.Column="1" Grid.Row="2" Margin="5" 
                      Value="{Binding TimeProgress, Mode=OneWay}"/>
 
