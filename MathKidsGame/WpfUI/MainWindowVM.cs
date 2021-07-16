@@ -1,6 +1,7 @@
 ﻿using MathKidsCore;
 using Prism.Commands;
 using Prism.Mvvm;
+using System.Media;
 using System.Threading.Tasks;
 using System.Windows.Media;
 
@@ -9,6 +10,8 @@ namespace WpfUI
     public class MainWindowVM : BindableBase
     {
         private GameController _gameController;
+        private SoundPlayer _myPlayer = new SoundPlayer();
+
         public string BestScore => $"Рекорд : { _gameController.MaxInARow }";
         public string CurrentScore => $"Счет : { _gameController.CurrentInARow }";
         public string Description { get; private set; }
