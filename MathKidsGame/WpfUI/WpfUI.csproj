@@ -112,5 +112,11 @@
       <Name>MathKidsCore</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Wrong3.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Correct.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

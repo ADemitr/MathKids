@@ -7,6 +7,8 @@ namespace WpfUI
     public class MainWindowVM : BindableBase
     {
         private GameController _gameController;
+        private SoundPlayer _myPlayer = new SoundPlayer();
+
         public string Record => $"Рекорд : { _gameController.MaxInARow }";
         public string Description { get; private set; }
         public DelegateCommand SayYes { get; }
