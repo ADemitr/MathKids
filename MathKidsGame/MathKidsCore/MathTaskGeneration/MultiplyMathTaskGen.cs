@@ -19,6 +19,13 @@ namespace MathKidsCore.MathTaskGeneration
         }
 
         protected override int GetResult(int a, int b) => a * b;
+
+        protected override int GenerateCorrection(int a, int b)
+        {
+            return base.GenerateCorrection(a, b) 
+                + _random.Next(-1, 1) * a 
+                + _random.Next(-1,1)*b;
+        }
     }
 }
 

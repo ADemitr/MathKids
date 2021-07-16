@@ -25,21 +25,21 @@ namespace MathKidsCore.MathTaskGeneration
             bool isCorrectEquation = GenerateRandomCorrectness();
             if (isCorrectEquation == false)
             {
-                result += GenerateNonZeroCorrection();
+                result += GenerateNonZeroCorrection(a, b);
             }
 
             string mathTaskDescription = GetMathTaskDescription(a, b, result);
             return new MathTask(mathTaskDescription, isCorrectEquation, correctResult);
         }
 
-        private int GenerateNonZeroCorrection()
+        private int GenerateNonZeroCorrection(int a, int b)
         {
             int correction = 0;
 
             int countTriesToGenerateNonZeroCorrection = 10;
             for (int i = 0; i < countTriesToGenerateNonZeroCorrection; i++)
             {
-                correction = GenerateCorrection();
+                correction = GenerateCorrection(a, b);
                 if (correction != 0)
                 {
                     break;
@@ -54,7 +54,7 @@ namespace MathKidsCore.MathTaskGeneration
             return correction;
         }
 
-        protected virtual int GenerateCorrection()
+        protected virtual int GenerateCorrection(int a, int b)
             => _random.Next(-1, 1) + _random.Next(-1, 1) * 10;
 
         protected abstract void GenerateNumbers(out int a, out int b);
