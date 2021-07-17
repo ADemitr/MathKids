@@ -3,11 +3,10 @@ using Prism.Commands;
 using Prism.Mvvm;
 using System.Media;
 using System.Threading.Tasks;
-using System.Windows.Media;
 
 namespace WpfUI
 {
-    public class MainWindowVM : BindableBase
+    public class GameWindowVM : BindableBase
     {
         private GameController _gameController;
         private SoundPlayer _myPlayer = new SoundPlayer();
@@ -22,7 +21,7 @@ namespace WpfUI
         public string Answer { get; private set; }
         public string AnswerColor { get; private set; }
 
-        public MainWindowVM()
+        public GameWindowVM()
         {
             _gameController = new GameController();
             NextRound();
@@ -47,7 +46,6 @@ namespace WpfUI
             RaisePropertyChanged(nameof(CurrentScore));
             RaisePropertyChanged(nameof(ButtonsEnabled));
             RaisePropertyChanged(nameof(Answer));
-
         }
 
         private void CheckResult(bool solvedCorrect, bool timeIsUp = false)
