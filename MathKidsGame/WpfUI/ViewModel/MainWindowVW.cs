@@ -6,22 +6,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using WpfUI.View;
 
 namespace WpfUI
 {
     public class MainWindowVW : BindableBase
     {
-        public DelegateCommand GameMaxInARow { get;  }
+        public DelegateCommand GameMaxInARow { get; }
+        public DelegateCommand EditSettings { get; }
 
         public MainWindowVW()
         {
-            GameMaxInARow = new DelegateCommand(() => RunGame());
-        }
-
-        private void RunGame()
-        {
-            var gameWinodw = new GameWindow();
-            gameWinodw.Show();
+            GameMaxInARow = new DelegateCommand(() => new GameWindow().ShowDialog());
+            EditSettings = new DelegateCommand(() => new GameSettings().ShowDialog());
         }
     }
 }

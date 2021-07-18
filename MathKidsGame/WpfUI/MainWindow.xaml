@@ -23,11 +23,12 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
 
-        <Button Content="Подряд" FontSize="36" Margin="15"
+        <Button Content="Играть" FontSize="36" Margin="15"
                 Command="{Binding GameMaxInARow}"
                 Grid.Column="1" Grid.Row="1" />
 
-        <Button Content="На время" FontSize="36" Margin="15"
+        <Button Content="Настройки" FontSize="36" Margin="15"
+                Command="{Binding EditSettings}"
                 Grid.Column="1" Grid.Row="2" />
 
     </Grid>
