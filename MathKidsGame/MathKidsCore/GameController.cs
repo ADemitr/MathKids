@@ -8,10 +8,12 @@ namespace MathKidsCore
 {
     public class GameController
     {
-        public EventHandler<int> OnCountDown;
-        public EventHandler OnTimeForMathTaskUp;
         public int MaxInARow { get; private set; } = 0;
         public int CurrentInARow { get; private set; } = 0;
+
+        public EventHandler<int> OnCountDown;
+        public EventHandler OnTimeForMathTaskUp;
+
         private IMathTaskGenerator _mathTaskGenerator;
         private MathTask _correntMathTask;
         private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(4);
