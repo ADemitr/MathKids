@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:WpfUI.View"
         mc:Ignorable="d"
         Title="GameSettings" Height="450" Width="800"
-        FontSize="36">
+        FontSize="24">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -15,27 +15,52 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="0.1*"/>
-            <RowDefinition/>
-            <RowDefinition/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
 
-        <ListBox Grid.Row="1" Grid.Column="1" SelectionMode="Single" AllowDrop="True">
-            <ListBox.ItemTemplate>
-                <DataTemplate>
-                    <CheckBox Content="Сложение"/>
-                </DataTemplate>
-            </ListBox.ItemTemplate>
-        </ListBox>
+        <GroupBox 
+                  Grid.Row="2" Grid.Column="1"  Margin="8">
+            <GroupBox.Header>
+                <TextBlock TextDecorations="Underline">Операции</TextBlock>
+            </GroupBox.Header>
+            <StackPanel>
+                <StackPanel.LayoutTransform>
+                    <ScaleTransform ScaleX="1.1" ScaleY="1.1" />
+                </StackPanel.LayoutTransform>
+                <CheckBox Content="Сложение" IsChecked="true" VerticalContentAlignment="Center" />
+                <CheckBox Content="Вычетание" IsChecked="true" VerticalContentAlignment="Center" />
+                <CheckBox Content="Умножение" IsChecked="true" VerticalContentAlignment="Center" />
+            </StackPanel>
+        </GroupBox>
 
-        <ComboBox Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
-            <ListBoxItem Content="Для самых маленьких"/>
-            <ListBoxItem Content="Школьник"/>
-            <ListBoxItem Content="Академик"/>
-        </ComboBox>
-
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Сложность: " Grid.Column="0" Margin="8"/>
+            <ComboBox  Margin="8" Grid.Column="1"
+                  VerticalAlignment="Center" SelectedIndex="0">
+                <ListBoxItem>
+                    <DockPanel>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="auto"/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Для самых маленьких" DockPanel.Dock="Left"/>
+                            <Image Source="icon_baby.png" DockPanel.Dock="Right"/>
+                        </Grid>
+                    </DockPanel>
+                </ListBoxItem>
+                <ListBoxItem Content="Школьник"/>
+                <ListBoxItem Content="Академик"/>
+            </ComboBox>
+        </Grid>
     </Grid>
 </Window>
