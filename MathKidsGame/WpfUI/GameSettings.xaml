@@ -47,19 +47,23 @@
             <ComboBox  Margin="8" Grid.Column="1"
                   VerticalAlignment="Center" SelectedIndex="0">
                 <ListBoxItem>
-                    <DockPanel>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="auto"/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Label Content="Для самых маленьких" DockPanel.Dock="Left"/>
-                            <Image Source="icon_baby.png" DockPanel.Dock="Right"/>
-                        </Grid>
-                    </DockPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Для самых маленьких   "/>
+                        <Image Source="Images/icon_baby.png"  Height="29" Width="29"/>
+                    </StackPanel>
                 </ListBoxItem>
-                <ListBoxItem Content="Школьник"/>
-                <ListBoxItem Content="Академик"/>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Школьник                      "/>
+                        <Image Source="Images/icon_school.png"  Height="29" Width="29"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Академик                      "/>
+                        <Image Source="Images/icon_academy3.png"  Height="35" Width="35"/>
+                    </StackPanel>
+                </ListBoxItem>
             </ComboBox>
         </Grid>
     </Grid>

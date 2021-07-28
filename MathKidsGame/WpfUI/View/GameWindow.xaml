@@ -25,6 +25,8 @@
             <RowDefinition Height="20"/>
         </Grid.RowDefinitions>
 
+        <Image Source="delete.gif" />
+
         <DockPanel Grid.Column="1" Grid.Row="0">
             <TextBlock x:Name="BestScore" DockPanel.Dock="Left"
                Text = "{Binding BestScore, Mode=OneWay}"

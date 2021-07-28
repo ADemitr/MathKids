@@ -66,11 +66,11 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\MainWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\GameSettings.xaml">
+    <Page Include="GameSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -82,11 +82,11 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainWindowVW.cs" />
-    <Compile Include="View\GameSettings.xaml.cs">
+    <Compile Include="GameSettings.xaml.cs">
       <DependentUpon>GameSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GameWindow.xaml.cs">
@@ -133,6 +133,18 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Correct.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\icon_academy.jpg" />
+    <Resource Include="Images\icon_academy2.jpg" />
+    <Resource Include="Images\icon_academy3.png" />
+    <Resource Include="Images\icon_baby.png" />
+    <Resource Include="Images\icon_school.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="delete.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,6 +30,5 @@
         <Button Content="Настройки" FontSize="36" Margin="15"
                 Command="{Binding EditSettings}"
                 Grid.Column="1" Grid.Row="2" />
-
     </Grid>
 </Window>
