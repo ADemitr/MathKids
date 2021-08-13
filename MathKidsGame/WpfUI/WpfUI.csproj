@@ -135,16 +135,9 @@
     <None Include="Resources\Correct.wav" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Images\icon_academy.jpg" />
-    <Resource Include="Images\icon_academy2.jpg" />
     <Resource Include="Images\icon_academy3.png" />
     <Resource Include="Images\icon_baby.png" />
     <Resource Include="Images\icon_school.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="delete.gif">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Resource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
