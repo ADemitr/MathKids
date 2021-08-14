@@ -70,7 +70,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="GameSettings.xaml">
+    <Page Include="View\GameSettings.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -86,7 +86,7 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="ViewModel\MainWindowVW.cs" />
-    <Compile Include="GameSettings.xaml.cs">
+    <Compile Include="View\GameSettings.xaml.cs">
       <DependentUpon>GameSettings.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\GameWindow.xaml.cs">
@@ -138,6 +138,10 @@
     <Resource Include="Images\icon_academy3.png" />
     <Resource Include="Images\icon_baby.png" />
     <Resource Include="Images\icon_school.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back.jpg" />
+    <Resource Include="Images\back2.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

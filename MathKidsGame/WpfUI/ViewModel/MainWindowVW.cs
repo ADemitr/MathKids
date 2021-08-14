@@ -17,8 +17,6 @@ namespace WpfUI
 
         public MainWindowVW()
         {
-            GameMaxInARow = new DelegateCommand(() => new GameWindow().ShowDialog());
-            EditSettings = new DelegateCommand(() => new GameSettings().ShowDialog());
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using WpfUI.View;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,25 @@ namespace WpfUI
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ShowSettings(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            GameSettingsScreen.Visibility = Visibility.Visible;
+            BackToMainMenu.Visibility = Visibility.Visible;
+        }
+
+        private void PlayGame(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void BackToMainMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MainMenu.Visibility = Visibility.Visible;
+            GameSettingsScreen.Visibility = Visibility.Collapsed;
+            BackToMainMenu.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -1,11 +1,11 @@
-﻿<Window x:Class="WpfUI.View.GameSettings"
+﻿<UserControl x:Class="WpfUI.View.GameSettings"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfUI.View"
         mc:Ignorable="d"
-        Title="GameSettings" Height="450" Width="800"
+        Height="450" Width="800"
         FontSize="24">
     <Grid>
         <Grid.ColumnDefinitions>
@@ -49,22 +49,22 @@
                 <ListBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Для самых маленьких   "/>
-                        <Image Source="Images/icon_baby.png"  Height="29" Width="29"/>
+                        <Image Source="../Images/icon_baby.png"  Height="29" Width="29"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Школьник                      "/>
-                        <Image Source="Images/icon_school.png"  Height="29" Width="29"/>
+                        <Image Source="../Images/icon_school.png"  Height="29" Width="29"/>
                     </StackPanel>
                 </ListBoxItem>
                 <ListBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Академик                      "/>
-                        <Image Source="Images/icon_academy3.png"  Height="35" Width="35"/>
+                        <Image Source="../Images/icon_academy3.png"  Height="35" Width="35"/>
                     </StackPanel>
                 </ListBoxItem>
             </ComboBox>
         </Grid>
     </Grid>
-</Window>
+</UserControl>
