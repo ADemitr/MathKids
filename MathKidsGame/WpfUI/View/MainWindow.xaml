@@ -1,11 +1,11 @@
-﻿<Window x:Class="WpfUI.MainWindow"
+﻿<Window x:Class="WpfUI.View.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfUI.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Супер Счетовод" Height="500" Width="800">
     <!--<Window.DataContext>
         <local:MainWindowVW/>
     </Window.DataContext>-->
@@ -32,8 +32,8 @@
                 Click="ShowSettings"
                 Grid.Column="1" Grid.Row="2" />
     </Grid>
-        <local:GameSettings x:Name="GameSettingsScreen" Visibility="Collapsed"/>
-
+        <local:GameSettingsUC x:Name="GameSettingsScreen" Visibility="Collapsed"/>
+        <local:GameUC x:Name="GameScreen" Visibility="Collapsed"/>
         <Button Name="BackToMainMenu" Height="64" Width="64" HorizontalAlignment="Left"
                 VerticalAlignment="Top"  Margin="20" Background="Transparent" BorderThickness="0"  
                 Click="BackToMainMenu_Click" Visibility="Collapsed">

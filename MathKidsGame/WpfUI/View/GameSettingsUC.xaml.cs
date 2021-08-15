@@ -17,9 +17,9 @@ namespace WpfUI.View
     /// <summary>
     /// Логика взаимодействия для GameSettings.xaml
     /// </summary>
-    public partial class GameSettings : UserControl
+    public partial class GameSettingsUC : UserControl
     {
-        public GameSettings()
+        public GameSettingsUC()
         {
             InitializeComponent();
         }

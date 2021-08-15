@@ -1,14 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using WpfUI.View;
 
-namespace WpfUI
+namespace WpfUI.ViewModel
 {
     public class MainWindowVW : BindableBase
     {

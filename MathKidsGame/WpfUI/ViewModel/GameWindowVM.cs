@@ -4,7 +4,7 @@ using Prism.Mvvm;
 using System.Media;
 using System.Threading.Tasks;
 
-namespace WpfUI
+namespace WpfUI.ViewModel
 {
     public class GameWindowVM : BindableBase
     {

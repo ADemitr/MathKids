@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace WpfUI
+namespace WpfUI.View
 {
     /// <summary>
     /// Логика взаимодействия для MainWindow.xaml
     /// </summary>
-    public partial class GameWindow : Window
+    public partial class GameUC : UserControl
     {
-        public GameWindow()
+        public GameUC()
         {
             InitializeComponent();
         }
