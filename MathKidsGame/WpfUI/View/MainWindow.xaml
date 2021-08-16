@@ -10,30 +10,33 @@
         <local:MainWindowVW/>
     </Window.DataContext>-->
 
-        <Grid Name="RootGrid">
+    <Grid Name="RootGrid">
         <Grid Name="MainMenu">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="3*"/>
-            <ColumnDefinition/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-            <RowDefinition/>
-        </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="3*"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
 
-        <Button Content="Играть" FontSize="36" Margin="15"
+            <Button Content="Играть" FontSize="36" Margin="15"
                 Click="PlayGame"
                 Grid.Column="1" Grid.Row="1" />
 
-        <Button Content="Настройки" FontSize="36" Margin="15"
+            <Button Content="Настройки" FontSize="36" Margin="15"
                 Click="ShowSettings"
                 Grid.Column="1" Grid.Row="2" />
-    </Grid>
+        </Grid>
+
         <local:GameSettingsUC x:Name="GameSettingsScreen" Visibility="Collapsed"/>
-        <local:GameUC x:Name="GameScreen" Visibility="Collapsed"/>
+        <Grid x:Name="GameGrid">
+            <!--<local:GameUC x:Name="GameScreen" Visibility="Collapsed"/>-->
+        </Grid>
         <Button Name="BackToMainMenu" Height="64" Width="64" HorizontalAlignment="Left"
                 VerticalAlignment="Top"  Margin="20" Background="Transparent" BorderThickness="0"  
                 Click="BackToMainMenu_Click" Visibility="Collapsed">
