@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using WpfUI.ViewModel;
 
 namespace WpfUI.View
 {
@@ -23,6 +24,11 @@ namespace WpfUI.View
         public GameUC()
         {
             InitializeComponent();
+        }
+
+        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        {
+            ((GameWindowVM)DataContext).Stop = true;
         }
     }
 }

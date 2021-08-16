@@ -20,6 +20,7 @@ namespace WpfUI.ViewModel
         public bool ButtonsEnabled { get; private set; }
         public string Answer { get; private set; }
         public string AnswerColor { get; private set; }
+        public bool Stop { get; set; }
 
         public GameWindowVM()
         {
@@ -67,11 +68,14 @@ namespace WpfUI.ViewModel
             RaisePropertyChanged(nameof(Answer));
             RaisePropertyChanged(nameof(AnswerColor));
 
-            _myPlayer.Stream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
-            _myPlayer.Play();
+            if (!Stop)
+            {
+                _myPlayer.Stream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
+                _myPlayer.Play();
 
-            Task.Delay(500)
-                .ContinueWith(t => NextRound());
+                Task.Delay(500)
+                    .ContinueWith(t => NextRound());
+            }
         }
     }
 }

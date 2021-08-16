@@ -10,24 +10,33 @@ namespace WpfUI.View
         public MainWindow() => InitializeComponent();
         private void ShowSettings(object sender, RoutedEventArgs e) => ShowScreen(GameSettingsScreen);
 
-        private void PlayGame(object sender, RoutedEventArgs e) => ShowScreen(GameScreen);
+        private void PlayGame(object sender, RoutedEventArgs e)
+        {
+            HideAllScreens();
+            GameGrid.Children.Add(new GameUC());
+            BackToMainMenu.Visibility = Visibility.Visible;
+        }
 
         private void BackToMainMenu_Click(object sender, RoutedEventArgs e) => ShowScreen(MainMenu);
 
         private void ShowScreen(UIElement screenToShow)
         {
-            // Hide all screens and buttons
-            MainMenu.Visibility = Visibility.Collapsed;
-            GameSettingsScreen.Visibility = Visibility.Collapsed;
-            BackToMainMenu.Visibility = Visibility.Collapsed;
-            GameScreen.Visibility = Visibility.Collapsed;
+            HideAllScreens();
 
-            // Show needed
-            screenToShow.Visibility = Visibility.Visible;
-            if(screenToShow != MainMenu)
+            if (screenToShow != MainMenu)
             {
                 BackToMainMenu.Visibility = Visibility.Visible;
             }
+
+            screenToShow.Visibility = Visibility.Visible;
+        }
+
+        private void HideAllScreens()
+        {
+            MainMenu.Visibility = Visibility.Collapsed;
+            BackToMainMenu.Visibility = Visibility.Collapsed;
+            GameSettingsScreen.Visibility = Visibility.Collapsed;
+            GameGrid.Children.Clear();
         }
     }
 }
