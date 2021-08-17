@@ -3,14 +3,17 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfUI.View"
+        xmlns:local="clr-namespace:WpfUI.ViewModel"
         mc:Ignorable="d"
         FontSize="24"
         Height="450" Width="800">
     <UserControl.Resources>
         <ScaleTransform x:Key="scale" ScaleX="2.0" ScaleY="2.0" />
     </UserControl.Resources>
-    <Grid>
+    <!--<UserControl.DataContext>
+        --><!--<local:SettingsVW />--><!--
+    </UserControl.DataContext>-->
+        <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
             <ColumnDefinition Width="4*"/>
@@ -43,11 +46,11 @@
                 </Grid.RowDefinitions>
 
                 <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
-                      Content="Сложение" Grid.Row="0" Grid.Column="0"/>
+                      Content="Сложение" Grid.Row="0" Grid.Column="0" IsChecked="{Binding OperationAddChecked}"/>
                 <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
-                      Content="Вычетание" Grid.Row="0" Grid.Column="1"/>
+                      Content="Вычетание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
                 <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
-                      Content="Умножение" Grid.Row="1" Grid.Column="0"/>
+                      Content="Умножение" Grid.Row="1" Grid.Column="0" IsChecked="{Binding OperationMultiplyChecked}"/>
                 <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
                       Content="Деление" Grid.Row="1" Grid.Column="1"/>
 
@@ -61,7 +64,7 @@
             </Grid.ColumnDefinitions>
             <Label Content="Сложность: " Grid.Column="0" Margin="8"/>
             <ComboBox  Margin="8" Grid.Column="1"
-                  VerticalAlignment="Center" SelectedIndex="0">
+                  VerticalAlignment="Center" SelectedIndex="{Binding SelectedDificulty}">
                 <ListBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Для самых маленьких   "/>

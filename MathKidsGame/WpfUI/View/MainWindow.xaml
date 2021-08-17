@@ -6,9 +6,6 @@
         xmlns:local="clr-namespace:WpfUI.View"
         mc:Ignorable="d"
         Title="Супер Счетовод" Height="500" Width="800">
-    <!--<Window.DataContext>
-        <local:MainWindowVW/>
-    </Window.DataContext>-->
 
     <Grid Name="RootGrid">
         <Grid Name="MainMenu">
@@ -33,7 +30,10 @@
                 Grid.Column="1" Grid.Row="2" />
         </Grid>
 
-        <local:GameSettingsUC x:Name="GameSettingsScreen" Visibility="Collapsed"/>
+        <Grid x:Name="SettingsGrid">
+            <!--<local:GameSettingsUC x:Name="GameSettingsScreen" Visibility="Collapsed"/>-->
+        </Grid>
+
         <Grid x:Name="GameGrid">
             <!--<local:GameUC x:Name="GameScreen" Visibility="Collapsed"/>-->
         </Grid>
