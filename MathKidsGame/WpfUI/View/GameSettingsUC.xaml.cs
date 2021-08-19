@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using WpfUI.ViewModel;
 
 namespace WpfUI.View
 {
@@ -19,9 +20,11 @@ namespace WpfUI.View
     /// </summary>
     public partial class GameSettingsUC : UserControl
     {
-        public GameSettingsUC()
+        public GameSettingsUC(SettingsVW settingsVW)
         {
             InitializeComponent();
+
+            DataContext = settingsVW;
         }
     }
 }

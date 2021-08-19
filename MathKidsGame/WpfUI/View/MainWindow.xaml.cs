@@ -1,4 +1,5 @@
-﻿using MathKidsCore.Model;
+﻿using Autofac;
+using MathKidsCore.Model;
 using System.Windows;
 using WpfUI.ViewModel;
 
@@ -9,25 +10,31 @@ namespace WpfUI.View
     /// </summary>
     public partial class MainWindow : Window
     {
+        private ILifetimeScope _container;
+
         private GameSettingsModel _settings = new GameSettingsModel
         {
             Dificulty = GameDificulty.Normal
         };
 
-        public MainWindow() => InitializeComponent();
+        public MainWindow(ILifetimeScope container)
+        {
+            InitializeComponent();
+
+            _container = container;
+        }
+
         private void ShowSettings(object sender, RoutedEventArgs e)
         {
             HideAllScreens();
-            var settingsScreen = new GameSettingsUC();
-            settingsScreen.DataContext = new SettingsVW(_settings);
-            SettingsGrid.Children.Add(settingsScreen);
+            SettingsGrid.Children.Add(_container.Resolve<GameSettingsUC>());
             BackToMainMenu.Visibility = Visibility.Visible;
         }
 
         private void PlayGame(object sender, RoutedEventArgs e)
         {
             HideAllScreens();
-            GameGrid.Children.Add(new GameUC());
+            SettingsGrid.Children.Add(_container.Resolve<GameUC>());
             BackToMainMenu.Visibility = Visibility.Visible;
         }
 

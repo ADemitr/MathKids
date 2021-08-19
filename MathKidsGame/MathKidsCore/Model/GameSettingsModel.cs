@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MathKidsCore.Model
 {
-    public struct GameSettingsModel
+    public class GameSettingsModel
     {
         public TimeSpan TimeForMathTask { get; set; }
         public int MaxResult { get; set; }
