@@ -7,12 +7,6 @@
         mc:Ignorable="d"
         FontSize="24"
         Height="450" Width="800">
-    <UserControl.Resources>
-        <ScaleTransform x:Key="scale" ScaleX="2.0" ScaleY="2.0" />
-    </UserControl.Resources>
-    <!--<UserControl.DataContext>
-        --><!--<local:SettingsVW />--><!--
-    </UserControl.DataContext>-->
         <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -29,12 +23,38 @@
             <RowDefinition Height="0.1*"/>
         </Grid.RowDefinitions>
 
-        <GroupBox 
-                  Grid.Row="2" Grid.Column="1"  Margin="8">
-            <GroupBox.Header>
-                <!--<TextBlock  TextDecorations="Underline">Операции</TextBlock>-->
-                <TextBlock >Операции</TextBlock>
-            </GroupBox.Header>
+        <GroupBox  Grid.Row="2" Grid.Column="1"  Margin="8" Header="Операции" >
+            <GroupBox.Resources>
+                <Style TargetType="{x:Type CheckBox}">
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="{x:Static SystemFonts.MessageFontSize}" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Margin" Value="12" />
+                    <Setter Property="Focusable" Value="False" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="LayoutTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="2.2" ScaleY="2.2" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Margin" Value="12 8" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="{x:Type Rectangle}">
+                    <Setter Property="RadiusX" Value="20" />
+                    <Setter Property="RadiusY" Value="20" />
+                    <Setter Property="Fill" Value="White" />
+                    <Setter Property="Stroke" Value="Black" />
+                    <Setter Property="Margin" Value="3" />
+
+                </Style>
+            </GroupBox.Resources>
             <Grid Margin=" 0 10 0 0">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition/>
@@ -45,14 +65,14 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
-                      Content="Сложение" Grid.Row="0" Grid.Column="0" IsChecked="{Binding OperationAddChecked}"/>
-                <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
-                      Content="Вычетание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
-                <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
-                      Content="Умножение" Grid.Row="1" Grid.Column="0" IsChecked="{Binding OperationMultiplyChecked}"/>
-                <CheckBox LayoutTransform="{StaticResource scale}" FontSize="{x:Static SystemFonts.MessageFontSize}"  
-                      Content="Деление" Grid.Row="1" Grid.Column="1"/>
+                <Rectangle Grid.Row="0" Grid.Column="0" />
+                <CheckBox  Content="Сложение" Grid.Row="0" Grid.Column="0" IsChecked="{Binding OperationAddChecked}"/>
+                <Rectangle Grid.Row="0" Grid.Column="1" />
+                <CheckBox  Content="Вычетание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
+                <Rectangle Grid.Row="1" Grid.Column="0" />
+                <CheckBox  Content="Умножение" Grid.Row="1" Grid.Column="0" IsChecked="{Binding OperationMultiplyChecked}"/>
+                <Rectangle Grid.Row="1" Grid.Column="1" />
+                <CheckBox  Content="Деление" Grid.Row="1" Grid.Column="1"/>
 
             </Grid>
         </GroupBox>
