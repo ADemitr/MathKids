@@ -1,7 +1,5 @@
 ﻿using Autofac;
-using MathKidsCore.Model;
 using System.Windows;
-using WpfUI.ViewModel;
 
 namespace WpfUI.View
 {
@@ -11,11 +9,6 @@ namespace WpfUI.View
     public partial class MainWindow : Window
     {
         private ILifetimeScope _container;
-
-        private GameSettingsModel _settings = new GameSettingsModel
-        {
-            Dificulty = GameDificulty.Normal
-        };
 
         public MainWindow(ILifetimeScope container)
         {
@@ -27,37 +20,28 @@ namespace WpfUI.View
         private void ShowSettings(object sender, RoutedEventArgs e)
         {
             HideAllScreens();
-            SettingsGrid.Children.Add(_container.Resolve<GameSettingsUC>());
+            ActiveScreen.Children.Add(_container.Resolve<GameSettingsUC>());
             BackToMainMenu.Visibility = Visibility.Visible;
         }
 
         private void PlayGame(object sender, RoutedEventArgs e)
         {
             HideAllScreens();
-            SettingsGrid.Children.Add(_container.Resolve<GameUC>());
+            ActiveScreen.Children.Add(_container.Resolve<GameUC>());
             BackToMainMenu.Visibility = Visibility.Visible;
         }
 
-        private void BackToMainMenu_Click(object sender, RoutedEventArgs e) => ShowScreen(MainMenu);
-
-        private void ShowScreen(UIElement screenToShow)
+        private void BackToMainMenu_Click(object sender, RoutedEventArgs e)
         {
             HideAllScreens();
-
-            if (screenToShow != MainMenu)
-            {
-                BackToMainMenu.Visibility = Visibility.Visible;
-            }
-
-            screenToShow.Visibility = Visibility.Visible;
+            MainMenu.Visibility = Visibility.Visible;
         }
 
         private void HideAllScreens()
         {
             MainMenu.Visibility = Visibility.Collapsed;
             BackToMainMenu.Visibility = Visibility.Collapsed;
-            SettingsGrid.Children.Clear();
-            GameGrid.Children.Clear();
+            ActiveScreen.Children.Clear();
         }
     }
 }

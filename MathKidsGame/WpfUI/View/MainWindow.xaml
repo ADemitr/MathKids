@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfUI.View"
         mc:Ignorable="d"
         Title="Супер Счетовод" Height="500" Width="800">
 
@@ -30,13 +29,8 @@
                 Grid.Column="1" Grid.Row="2" />
         </Grid>
 
-        <Grid x:Name="SettingsGrid">
-            <!--<local:GameSettingsUC x:Name="GameSettingsScreen" Visibility="Collapsed"/>-->
-        </Grid>
+        <Grid x:Name="ActiveScreen" />
 
-        <Grid x:Name="GameGrid">
-            <!--<local:GameUC x:Name="GameScreen" Visibility="Collapsed"/>-->
-        </Grid>
         <Button Name="BackToMainMenu" Height="64" Width="64" HorizontalAlignment="Left"
                 VerticalAlignment="Top"  Margin="20" Background="Transparent" BorderThickness="0"  
                 Click="BackToMainMenu_Click" Visibility="Collapsed">
