@@ -69,15 +69,16 @@
 
                 <Rectangle Grid.Row="0" Grid.Column="0"/>
                 <Rectangle Grid.Row="0" Grid.Column="0" Opacity="1" Fill="Transparent"/>
-                <CheckBox Content="Сложение"  Grid.Row="0" Grid.Column="0" IsChecked="{Binding OperationAddChecked}"/>
                 <Rectangle Grid.Row="0" Grid.Column="1" Opacity="1" Fill="Transparent"/>
                 <Rectangle Grid.Row="0" Grid.Column="1" />
-                <CheckBox  Content="Вычетание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
                 <Rectangle Grid.Row="1" Grid.Column="0" Opacity="1" Fill="Transparent"/>
                 <Rectangle Grid.Row="1" Grid.Column="0" />
-                <CheckBox  Content="Умножение" Grid.Row="1" Grid.Column="0" IsChecked="{Binding OperationMultiplyChecked}"/>
                 <Rectangle Grid.Row="1" Grid.Column="1" />
                 <Rectangle Grid.Row="1" Grid.Column="1" Opacity="1" Fill="Transparent"/>
+                
+                <CheckBox Content="Сложение"  Grid.Row="0" Grid.Column="0" IsChecked="{Binding OperationAddChecked}"/>
+                <CheckBox  Content="Вычетание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
+                <CheckBox  Content="Умножение" Grid.Row="1" Grid.Column="0" IsChecked="{Binding OperationMultiplyChecked}"/>
                 <CheckBox  Content="Деление" Grid.Row="1" Grid.Column="1"/>
 
             </Grid>

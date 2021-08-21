@@ -18,10 +18,14 @@ namespace MathKidsCore
         private MathTask _correntMathTask;
         private TimeSpan _timeForMathTask = TimeSpan.FromSeconds(4);
         private CancellationTokenSource _ctsForTime;
+        private GameSettingsModel _gameSettingsModel;
 
-
-        public GameController()
+        public GameController(GameSettingsModel gameSettingsModel)
         {
+            _gameSettingsModel = gameSettingsModel;
+
+            MaxInARow = _gameSettingsModel.MaxResult;
+
             Random r = new Random();
 
             IMathTaskGenerator mathTaskCombinator = new MathTaskCombinator(r,
@@ -49,6 +53,7 @@ namespace MathKidsCore
 
             CurrentInARow = isRightAnswer ? CurrentInARow + 1 : 0;
             MaxInARow = Math.Max(CurrentInARow, MaxInARow);
+            _gameSettingsModel.MaxResult = MaxInARow;
 
             return isRightAnswer;
         }

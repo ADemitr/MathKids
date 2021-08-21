@@ -7,10 +7,6 @@
         mc:Ignorable="d" Unloaded="UserControl_Unloaded"
         Height="450" Width="800">
 
-    <UserControl.DataContext>
-        <local:GameWindowVM/>
-    </UserControl.DataContext>
-
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="50"/>

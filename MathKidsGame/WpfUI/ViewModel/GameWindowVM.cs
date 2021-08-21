@@ -22,9 +22,9 @@ namespace WpfUI.ViewModel
         public string AnswerColor { get; private set; }
         public bool Stop { get; set; }
 
-        public GameWindowVM()
+        public GameWindowVM(GameController gameController)
         {
-            _gameController = new GameController();
+            _gameController = gameController;
             NextRound();
             SayYes = new DelegateCommand(() => CheckResult(_gameController.CheckAnswerAndCancelCountDown(true)));
             SayNo = new DelegateCommand(() => CheckResult(_gameController.CheckAnswerAndCancelCountDown(false)));

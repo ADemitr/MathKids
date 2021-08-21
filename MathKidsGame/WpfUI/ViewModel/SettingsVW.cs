@@ -1,5 +1,7 @@
 ﻿using MathKidsCore.Model;
 using Prism.Mvvm;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace WpfUI.ViewModel
 {
@@ -10,30 +12,49 @@ namespace WpfUI.ViewModel
         public SettingsVW(GameSettingsModel gameSettings)
         {
             _gameSettings = gameSettings;
+
+            if (_gameSettings.Operations != null)
+            {
+                _operationAddChecked = _gameSettings.Operations.Contains(MathOperations.Add);
+                _operationDifChecked = _gameSettings.Operations.Contains(MathOperations.Diff);
+                _operationMultiplyChecked = _gameSettings.Operations.Contains(MathOperations.Multiply);
+            }
         }
 
-        private bool _operationAddChecked = true;
+        private bool _operationAddChecked;
 
         public bool OperationAddChecked
         {
             get { return _operationAddChecked; }
-            set { _operationAddChecked = value; }
+            set 
+            { 
+                _operationAddChecked = value;
+                UpdateOperations();
+            }
         }
 
-        private bool _operationDifChecked = true;
+        private bool _operationDifChecked;
 
         public bool OperationDifChecked
         {
             get { return _operationDifChecked; }
-            set { _operationDifChecked = value; }
+            set 
+            { 
+                _operationDifChecked = value;
+                UpdateOperations();
+            }
         }
 
-        private bool _operationMultiplyChecked = true;
+        private bool _operationMultiplyChecked;
 
         public bool OperationMultiplyChecked
         {
             get { return _operationMultiplyChecked; }
-            set { _operationMultiplyChecked = value; }
+            set 
+            {
+                _operationMultiplyChecked = value;
+                UpdateOperations();
+            }
         }
 
         public int SelectedDificulty
@@ -42,5 +63,14 @@ namespace WpfUI.ViewModel
             set { _gameSettings.Dificulty = (GameDificulty) value; }
         }
 
+        private void UpdateOperations()
+        {
+            List<MathOperations> operations = new List<MathOperations>();
+            if (_operationAddChecked) operations.Add(MathOperations.Add);
+            if (_operationDifChecked) operations.Add(MathOperations.Diff);
+            if (_operationMultiplyChecked) operations.Add(MathOperations.Multiply);
+
+            _gameSettings.Operations = operations;
+        }
     }
 }

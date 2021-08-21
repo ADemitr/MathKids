@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using MathKidsCore;
 using MathKidsCore.Model;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ namespace WpfUI
             builder.RegisterType<SettingsVW>();
             builder.RegisterType<GameWindowVM>();
             builder.RegisterType<GameSettingsModel>().SingleInstance();
+            builder.RegisterType<GameController>();
             IContainer container = builder.Build();
 
             using (ILifetimeScope scope = container.BeginLifetimeScope())

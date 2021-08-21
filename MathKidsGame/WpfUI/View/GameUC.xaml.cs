@@ -21,9 +21,11 @@ namespace WpfUI.View
     /// </summary>
     public partial class GameUC : UserControl
     {
-        public GameUC()
+        public GameUC(GameWindowVM gameWindowVM)
         {
             InitializeComponent();
+
+            DataContext = gameWindowVM;
         }
 
         private void UserControl_Unloaded(object sender, RoutedEventArgs e)
