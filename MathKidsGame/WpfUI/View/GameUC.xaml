@@ -22,13 +22,18 @@
         </Grid.RowDefinitions>
 
         <Grid Grid.Column="1" Grid.Row="0">
+            <Border BorderThickness="2" Margin="60 6 0 0 " Opacity="0.25"
+                    CornerRadius="20" BorderBrush="Black" Background="#f5deb3">
+
+            </Border>
+
             <TextBlock x:Name="BestScore"  HorizontalAlignment="Left"
                Text = "{Binding BestScore, Mode=OneWay}"
-               FontSize="36" Margin="60 22 0 0 " />
+               FontSize="36" Margin="80 16 0 0 "  />
 
             <TextBlock x:Name="CurrentScore"  HorizontalAlignment="Right"
                Text = "{Binding CurrentScore, Mode=OneWay}"
-               FontSize="36" Margin="0 22 0 0 " />
+               FontSize="36" Margin="0 17 20 0 " />
 
         </Grid>
 
@@ -38,7 +43,7 @@
                    FontSize="36" HorizontalAlignment="Center" />
 
             <TextBlock x:Name="Description" Text="{ Binding Description }" 
-                   FontSize="72" HorizontalAlignment="Center"/>
+                   FontSize="72" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="#222222"/>
         </StackPanel>
         
         <ProgressBar Grid.Column="1" Grid.Row="2" Margin="5" 
@@ -51,15 +56,19 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
 
-            <Button Content="No" FontSize="48"
+            <Button FontSize="48" Padding="15" Background="#fffcf5" 
                     Command="{Binding SayNo}"
                     IsEnabled="{Binding ButtonsEnabled}"
-                     Grid.Column="0" Grid.Row="0" Margin="0 20 0 0"/>
+                     Grid.Column="0" Grid.Row="0" Margin="0 20 0 0">
+                <Image Source="../Images/No.png" />
+            </Button>
 
-            <Button Content="Yes" FontSize="48"
+            <Button  FontSize="48" Padding="15" Background="#fffcf5"
                      Command="{Binding SayYes}"
                      IsEnabled="{Binding ButtonsEnabled}"
-                     Grid.Column="2" Grid.Row="0" Margin="0 20 0 0"/>
+                     Grid.Column="2" Grid.Row="0" Margin="0 20 0 0">
+                <Image Source="../Images/Yes.png" />
+            </Button>
         </Grid>
     </Grid>
 </UserControl>
