@@ -26,13 +26,8 @@ namespace MathKidsCore
 
             MaxInARow = _gameSettingsModel.MaxResult;
 
-            Random r = new Random();
-
-            IMathTaskGenerator mathTaskCombinator = new MathTaskCombinator(r,
-                new SumMathTaskGen(r, 100),
-                new DiffMathTaskGen(r, 100),
-                new MultiplyMathTaskGenerator(r, 170));
-            _mathTaskGenerator = mathTaskCombinator;
+            var mathTaskGeneratorFabric = new MathTaskGeneratorFabric();
+            _mathTaskGenerator = mathTaskGeneratorFabric.CreateGenerator(_gameSettingsModel);
         }
 
         public string GenerateMathTaskAndGetDescription()
