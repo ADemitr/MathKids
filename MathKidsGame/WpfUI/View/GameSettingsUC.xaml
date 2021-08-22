@@ -51,8 +51,7 @@
                     <Setter Property="RadiusX" Value="20" />
                     <Setter Property="RadiusY" Value="20" />
                     <Setter Property="Stroke" Value="Black" />
-                    <Setter Property="Fill" Value="Gray" />
-                    <Setter Property="Opacity" Value="0.1" />
+                    <Setter Property="Fill" Value="#fffcf5" />
                     <Setter Property="Margin" Value="3" />
                 </Style>
             </GroupBox.Resources>
@@ -67,16 +66,12 @@
                 </Grid.RowDefinitions>
 
                 <Rectangle Grid.Row="0" Grid.Column="0"/>
-                <Rectangle Grid.Row="0" Grid.Column="0" Opacity="1" Fill="Transparent"/>
-                <Rectangle Grid.Row="0" Grid.Column="1" Opacity="1" Fill="Transparent"/>
                 <Rectangle Grid.Row="0" Grid.Column="1" />
-                <Rectangle Grid.Row="1" Grid.Column="0" Opacity="1" Fill="Transparent"/>
                 <Rectangle Grid.Row="1" Grid.Column="0" />
                 <Rectangle Grid.Row="1" Grid.Column="1" />
-                <Rectangle Grid.Row="1" Grid.Column="1" Opacity="1" Fill="Transparent"/>
                 
                 <CheckBox Content="Сложение"  Grid.Row="0" Grid.Column="0" IsChecked="{Binding OperationAddChecked}"/>
-                <CheckBox  Content="Вычетание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
+                <CheckBox  Content="Вычитание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
                 <CheckBox  Content="Умножение" Grid.Row="1" Grid.Column="0" IsChecked="{Binding OperationMultiplyChecked}"/>
                 <CheckBox  Content="Деление" Grid.Row="1" Grid.Column="1"/>
 
@@ -89,8 +84,8 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Label Content="Сложность: " Grid.Column="0" Margin="8"/>
-            <ComboBox  Margin="8" Grid.Column="1"
-                  VerticalAlignment="Center" SelectedIndex="{Binding SelectedDificulty}">
+            <ComboBox  Margin="8" Grid.Column="1" 
+                   VerticalAlignment="Center" SelectedIndex="{Binding SelectedDificulty}">
                 <ListBoxItem>
                     <StackPanel Orientation="Horizontal">
                         <Label Content="Для самых маленьких   "/>

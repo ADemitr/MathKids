@@ -46,7 +46,7 @@
                    FontSize="72" HorizontalAlignment="Center" FontWeight="Bold" FontStyle="Italic" Foreground="#222222"/>
         </StackPanel>
         
-        <ProgressBar Grid.Column="1" Grid.Row="2" Margin="5" 
+        <ProgressBar Grid.Column="1" Grid.Row="2" Margin="5"
                      Value="{Binding TimeProgress, Mode=OneWay}"/>
 
         <Grid Grid.Row="3" Grid.Column="1">

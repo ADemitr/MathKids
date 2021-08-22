@@ -1,5 +1,6 @@
 ﻿using Autofac;
 using System.Windows;
+using System.Windows.Input;
 
 namespace WpfUI.View
 {
@@ -42,6 +43,14 @@ namespace WpfUI.View
             MainMenu.Visibility = Visibility.Collapsed;
             BackToMainMenu.Visibility = Visibility.Collapsed;
             ActiveScreen.Children.Clear();
+        }
+
+        private void MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        {
+            // Kill logical focus
+            FocusManager.SetFocusedElement(FocusManager.GetFocusScope(userName), null);
+            // Kill keyboard focus
+            Keyboard.ClearFocus();
         }
     }
 }
