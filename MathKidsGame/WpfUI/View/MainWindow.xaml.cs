@@ -1,4 +1,5 @@
 ﻿using Autofac;
+using MathKidsCore.Model;
 using System.Windows;
 using System.Windows.Input;
 
@@ -10,12 +11,17 @@ namespace WpfUI.View
     public partial class MainWindow : Window
     {
         private ILifetimeScope _container;
+        private GameSettingsModel _settings;
 
-        public MainWindow(ILifetimeScope container)
+        public MainWindow(ILifetimeScope container, GameSettingsModel gameSettings)
         {
             InitializeComponent();
 
             _container = container;
+            _settings = gameSettings;
+
+            GameSettingsModel.Load(_settings);
+            userName.Text = _settings.CurrentUserName;
         }
 
         private void ShowSettings(object sender, RoutedEventArgs e)
@@ -45,12 +51,15 @@ namespace WpfUI.View
             ActiveScreen.Children.Clear();
         }
 
-        private void MouseDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void MouseDown(object sender, MouseButtonEventArgs e)
         {
             // Kill logical focus
             FocusManager.SetFocusedElement(FocusManager.GetFocusScope(userName), null);
             // Kill keyboard focus
             Keyboard.ClearFocus();
+
+            _settings.CurrentUserName = userName.Text;
+            GameSettingsModel.Save(_settings);
         }
     }
 }

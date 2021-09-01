@@ -49,6 +49,7 @@ namespace MathKidsCore
             CurrentInARow = isRightAnswer ? CurrentInARow + 1 : 0;
             MaxInARow = Math.Max(CurrentInARow, MaxInARow);
             _gameSettingsModel.MaxResult = MaxInARow;
+            GameSettingsModel.Save(_gameSettingsModel);
 
             return isRightAnswer;
         }

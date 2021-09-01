@@ -60,7 +60,11 @@ namespace WpfUI.ViewModel
         public int SelectedDificulty
         {
             get { return (int)_gameSettings.Dificulty; }
-            set { _gameSettings.Dificulty = (GameDificulty) value; }
+            set 
+            {
+                _gameSettings.Dificulty = (GameDificulty)value;
+                GameSettingsModel.Save(_gameSettings);
+            }
         }
 
         private void UpdateOperations()
@@ -71,6 +75,7 @@ namespace WpfUI.ViewModel
             if (_operationMultiplyChecked) operations.Add(MathOperations.Multiply);
 
             _gameSettings.Operations = operations;
+            GameSettingsModel.Save(_gameSettings);
         }
     }
 }
