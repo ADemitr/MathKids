@@ -14,26 +14,31 @@ namespace PrismWpfUI.ViewModels
         private IApplicationCommands _applicationCommands;
         private GameController _gameController;
         private SoundPlayer _myPlayer = new SoundPlayer();
-        private bool _stop;
-
-        public DelegateCommand SayYes { get; }
-        public DelegateCommand SayNo { get; }
-
 
         public GameUCViewModel(IApplicationCommands applicationCommands, GameController gameController)
         {
             _applicationCommands = applicationCommands;
             _gameController = gameController;
 
-            SayYes = new DelegateCommand(() => CheckResult(_gameController.CheckAnswerAndCancelCountDown(true)));
-            SayNo = new DelegateCommand(() => CheckResult(_gameController.CheckAnswerAndCancelCountDown(false)));
-            _gameController.OnCountDown += (o, progress) =>
-            {
-                TimeProgress = progress;
-                RaisePropertyChanged(nameof(TimeProgress));
-            };
+            _gameController.OnCountDown += (o, progress) => TimeProgress = progress;
             _gameController.OnTimeForMathTaskUp += (o, e) => CheckResult(solvedCorrect: false, timeIsUp: true);
         }
+
+        #region SayNo
+        private DelegateCommand _sayNo;
+        public DelegateCommand SayNo =>
+            _sayNo ?? (_sayNo = new DelegateCommand(ExecuteSayNo));
+
+        void ExecuteSayNo() => CheckResult(_gameController.CheckAnswerAndCancelCountDown(false));
+        #endregion
+
+        #region SayYes
+        private DelegateCommand _sayYes;
+        public DelegateCommand SayYes =>
+            _sayYes ?? (_sayYes = new DelegateCommand(ExecuteSayYes));
+
+        void ExecuteSayYes() => CheckResult(_gameController.CheckAnswerAndCancelCountDown(true));
+        #endregion
 
         #region BackCommand
         private DelegateCommand _backCommand;
@@ -43,7 +48,6 @@ namespace PrismWpfUI.ViewModels
         void ExecuteBackCommand()
         {
             _gameController.Stop();
-            _stop = true;
             _applicationCommands.Naviagte.Execute(typeof(MainMenu).Name);
         }
         #endregion
