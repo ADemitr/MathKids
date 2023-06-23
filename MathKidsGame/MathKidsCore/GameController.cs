@@ -10,6 +10,7 @@ namespace MathKidsCore
     {
         public int MaxInARow { get; private set; } = 0;
         public int CurrentInARow { get; private set; } = 0;
+        public bool IsRunning { get; private set; }
 
         public EventHandler<int> OnCountDown;
         public EventHandler OnTimeForMathTaskUp;
@@ -50,7 +51,11 @@ namespace MathKidsCore
             return isRightAnswer;
         }
 
-        public void Stop() => _ctsForTime?.Cancel();
+        public void Stop()
+        {
+            _ctsForTime?.Cancel();
+            IsRunning = false;
+        }
 
         private async Task CountDown(TimeSpan span, CancellationToken ct)
         {
@@ -78,6 +83,7 @@ namespace MathKidsCore
             _mathTaskGenerator = mathTaskGeneratorFabric.CreateGenerator(_gameSettingsModel);
             MaxInARow = _gameSettingsModel.MaxResult;
             CurrentInARow = 0;
+            IsRunning = true;
         }
     }
 }

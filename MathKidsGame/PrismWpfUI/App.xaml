@@ -11,11 +11,6 @@
         </Style>
         <Brush x:Key="bg">Red</Brush>
         <Style x:Key="ButtonBack" TargetType="{x:Type Button}">
-            <!--<Setter Property="Content">
-                <Setter.Value>
-                    <Image Source="Images/Back.jpg" />
-                </Setter.Value>
-            </Setter>-->
             <Setter Property="Height" Value="64"/>
             <Setter Property="Width" Value="64"/>   
             <Setter Property="VerticalAlignment" Value="Top"/>

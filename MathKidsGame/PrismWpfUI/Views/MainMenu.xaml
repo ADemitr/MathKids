@@ -35,13 +35,5 @@
             <Button Style="{StaticResource MenuButton}" Grid.Column="1" Grid.Row="2" Content="Настройки" 
                     Command="{Binding NaviagteCommand}" CommandParameter="GameSettingsUC"/>
         </Grid>
-
-        <Grid x:Name="ActiveScreen" />
-
-        <Button Name="BackToMainMenu" Height="64" Width="64" HorizontalAlignment="Left" 
-                VerticalAlignment="Top"  Margin="20" Background="Transparent" BorderThickness="0"  
-                Visibility="Collapsed">
-            <Image Source="../Source/Back.jpg" />
-        </Button>
     </Grid>
 </UserControl>

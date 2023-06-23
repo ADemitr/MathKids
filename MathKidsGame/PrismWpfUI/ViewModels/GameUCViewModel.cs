@@ -14,17 +14,11 @@ namespace PrismWpfUI.ViewModels
         private IApplicationCommands _applicationCommands;
         private GameController _gameController;
         private SoundPlayer _myPlayer = new SoundPlayer();
+        private bool _stop;
 
-        public string BestScore => $"Рекорд : {_gameController.MaxInARow}";
-        public string CurrentScore => $"Счет : {_gameController.CurrentInARow}";
-        public string Description { get; private set; }
-        public int TimeProgress { get; private set; }
         public DelegateCommand SayYes { get; }
         public DelegateCommand SayNo { get; }
-        public bool ButtonsEnabled { get; private set; }
-        public string Answer { get; private set; }
-        public string AnswerColor { get; private set; }
-        public bool Stop { get; set; }
+
 
         public GameUCViewModel(IApplicationCommands applicationCommands, GameController gameController)
         {
@@ -41,6 +35,7 @@ namespace PrismWpfUI.ViewModels
             _gameController.OnTimeForMathTaskUp += (o, e) => CheckResult(solvedCorrect: false, timeIsUp: true);
         }
 
+        #region BackCommand
         private DelegateCommand _backCommand;
         public DelegateCommand BackCommand =>
             _backCommand ?? (_backCommand = new DelegateCommand(ExecuteBackCommand));
@@ -48,43 +43,90 @@ namespace PrismWpfUI.ViewModels
         void ExecuteBackCommand()
         {
             _gameController.Stop();
-            Stop = true;
+            _stop = true;
             _applicationCommands.Naviagte.Execute(typeof(MainMenu).Name);
         }
+        #endregion
+
+        #region ButtonsEnabled
+        private bool _buttonsEnables;
+        public bool ButtonsEnabled
+        {
+            get { return _buttonsEnables; }
+            set { SetProperty(ref _buttonsEnables, value); }
+        }
+        #endregion
+
+        #region Description
+        private string _description;
+        public string Description
+        {
+            get { return _description; }
+            set { SetProperty(ref _description, value); }
+        }
+        #endregion
+
+        #region IsAnswerCorrect
+        private MathTaskResult _isAnswerCorrect;
+        public MathTaskResult IsAnswerCorrect
+        {
+            get { return _isAnswerCorrect; }
+            set { SetProperty(ref _isAnswerCorrect, value); }
+        }
+        #endregion
+
+        #region BestScore
+        private int _bestScore;
+        public int BestScore
+        {
+            get { return _bestScore; }
+            set { SetProperty(ref _bestScore, value); }
+        }
+        #endregion CurrentScore
+
+        #region CurrentScore
+        private int _currentScore;
+        public int CurrentScore
+        {
+            get { return _currentScore; }
+            set { SetProperty(ref _currentScore, value); }
+        }
+
+        #endregion
+
+        #region TimeProgress
+        private int _timeProgress;
+        public int TimeProgress
+        {
+            get { return _timeProgress; }
+            set { SetProperty(ref _timeProgress, value); }
+        }
+        #endregion
 
         private void NextRound()
         {
-            Answer = string.Empty;
+            IsAnswerCorrect = MathTaskResult.Undefined;
             Description = _gameController.GenerateMathTaskAndGetDescription();
             ButtonsEnabled = true;
 
-            RaisePropertyChanged(nameof(Description));
-            RaisePropertyChanged(nameof(BestScore));
-            RaisePropertyChanged(nameof(CurrentScore));
-            RaisePropertyChanged(nameof(ButtonsEnabled));
-            RaisePropertyChanged(nameof(Answer));
+            BestScore = _gameController.MaxInARow;
+            CurrentScore = _gameController.CurrentInARow;
         }
 
         private void CheckResult(bool solvedCorrect, bool timeIsUp = false)
         {
-            if (timeIsUp == false)
+            if (timeIsUp)
             {
-                Answer = solvedCorrect ? "Правильно!" : "Ошибка!";
-                AnswerColor = solvedCorrect ? "Green" : "Red";
+                IsAnswerCorrect = MathTaskResult.TimeIsUp;
             }
             else
             {
-                Answer = "Время истекло!";
-                AnswerColor = "Red";
+                IsAnswerCorrect = solvedCorrect ? MathTaskResult.Correct : MathTaskResult.Incorrect;
             }
 
             ButtonsEnabled = false;
 
-            RaisePropertyChanged(nameof(ButtonsEnabled));
-            RaisePropertyChanged(nameof(Answer));
-            RaisePropertyChanged(nameof(AnswerColor));
-
-            if (!Stop)
+            if (_gameController.IsRunning)
             {
                 //_myPlayer.Stream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
                 _myPlayer.Play();
@@ -96,7 +138,6 @@ namespace PrismWpfUI.ViewModels
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
-            Stop = false;
             _gameController.Restart();
             NextRound();
         }
