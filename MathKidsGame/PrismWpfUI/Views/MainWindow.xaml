@@ -1,0 +1,12 @@
+﻿<Window x:Class="PrismWpfUI.Views.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:prism="http://prismlibrary.com/"
+        xmlns:rn="clr-namespace:PrismWpfUI.Core"
+        xmlns:local="clr-namespace:PrismWpfUI.Views"
+        prism:ViewModelLocator.AutoWireViewModel="True"
+        Title="Супер Счетовод" Height="500" Width="800" >
+    <Grid>
+        <ContentControl prism:RegionManager.RegionName="{x:Static rn:RegionNames.ContentRegion}" />
+    </Grid>
+</Window>

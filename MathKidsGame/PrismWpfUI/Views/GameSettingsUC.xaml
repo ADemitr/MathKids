@@ -1,0 +1,113 @@
+﻿<UserControl x:Class="PrismWpfUI.Views.GameSettingsUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:prism="http://prismlibrary.com/"             
+             prism:ViewModelLocator.AutoWireViewModel="True">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="4*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.1*"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="0.1*"/>
+        </Grid.RowDefinitions>
+
+        <Button Name="BackToMainMenu" Style="{StaticResource ButtonBack}"
+                 Command="{Binding BackCommand}"
+                Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20 10 0 0" 
+                VerticalAlignment="Top"  HorizontalAlignment="Left">
+            <Image Source="../Images/Back.jpg" />
+        </Button>
+
+        <GroupBox  Grid.Row="2" Grid.Column="1"  Margin="8" Header="Операции" >
+            <GroupBox.Resources>
+                <Style TargetType="{x:Type CheckBox}">
+                    <Setter Property="LayoutTransform">
+                        <Setter.Value>
+                            <ScaleTransform ScaleX="2" ScaleY="2" />
+                        </Setter.Value>
+                    </Setter>
+                    <Setter Property="FontSize" Value="{x:Static SystemFonts.MessageFontSize}" />
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="Margin" Value="12" />
+                    <Setter Property="Focusable" Value="False" />
+                    <Setter Property="VerticalContentAlignment" Value="Center" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="LayoutTransform">
+                                <Setter.Value>
+                                    <ScaleTransform ScaleX="2.2" ScaleY="2.2" />
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Margin" Value="12 8" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+                <Style TargetType="{x:Type Rectangle}">
+                    <Setter Property="RadiusX" Value="20" />
+                    <Setter Property="RadiusY" Value="20" />
+                    <Setter Property="Stroke" Value="Black" />
+                    <Setter Property="Fill" Value="#fffcf5" />
+                    <Setter Property="Margin" Value="3" />
+                </Style>
+            </GroupBox.Resources>
+            <Grid Margin=" 0 10 0 0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Rectangle Grid.Row="0" Grid.Column="0"/>
+                <Rectangle Grid.Row="0" Grid.Column="1" />
+                <Rectangle Grid.Row="1" Grid.Column="0" />
+                <Rectangle Grid.Row="1" Grid.Column="1" />
+
+                <CheckBox Content="Сложение"  Grid.Row="0" Grid.Column="0" IsChecked="{Binding OperationAddChecked}"/>
+                <CheckBox  Content="Вычитание" Grid.Row="0" Grid.Column="1" IsChecked="{Binding OperationDifChecked}"/>
+                <CheckBox  Content="Умножение" Grid.Row="1" Grid.Column="0" IsChecked="{Binding OperationMultiplyChecked}"/>
+                <CheckBox  Content="Деление" Grid.Row="1" Grid.Column="1"/>
+
+            </Grid>
+        </GroupBox>
+
+        <Grid Grid.Row="1" Grid.Column="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto"/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Label Content="Сложность: " Grid.Column="0" Margin="8"/>
+            <ComboBox  Margin="8" Grid.Column="1" 
+                   VerticalAlignment="Center" SelectedIndex="{Binding SelectedDificulty}">
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Для самых маленьких   "/>
+                        <Image Source="../Images/icon_baby.png"  Height="29" Width="29"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Школьник                      "/>
+                        <Image Source="../Images/icon_school.png"  Height="29" Width="29"/>
+                    </StackPanel>
+                </ListBoxItem>
+                <ListBoxItem>
+                    <StackPanel Orientation="Horizontal">
+                        <Label Content="Академик                      "/>
+                        <Image Source="../Images/icon_academy3.png"  Height="35" Width="35"/>
+                    </StackPanel>
+                </ListBoxItem>
+            </ComboBox>
+        </Grid>
+    </Grid>
+</UserControl>

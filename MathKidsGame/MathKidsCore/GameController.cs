@@ -23,11 +23,7 @@ namespace MathKidsCore
         public GameController(GameSettingsModel gameSettingsModel)
         {
             _gameSettingsModel = gameSettingsModel;
-
-            MaxInARow = _gameSettingsModel.MaxResult;
-
-            var mathTaskGeneratorFabric = new MathTaskGeneratorFabric();
-            _mathTaskGenerator = mathTaskGeneratorFabric.CreateGenerator(_gameSettingsModel);
+            Restart();
         }
 
         public string GenerateMathTaskAndGetDescription()
@@ -35,7 +31,7 @@ namespace MathKidsCore
             _correntMathTask = _mathTaskGenerator.Next();
 
             _ctsForTime = new CancellationTokenSource();
-            Task.Run(() => CountDown(_timeForMathTask, _ctsForTime));
+            Task.Run(() => CountDown(_timeForMathTask, _ctsForTime.Token));
 
             return _correntMathTask.Description;
         }
@@ -54,7 +50,9 @@ namespace MathKidsCore
             return isRightAnswer;
         }
 
-        private async void CountDown(TimeSpan span, CancellationTokenSource cts)
+        public void Stop() => _ctsForTime?.Cancel();
+
+        private async Task CountDown(TimeSpan span, CancellationToken ct)
         {
             int progress = 0;
             int parts = 10;
@@ -64,17 +62,22 @@ namespace MathKidsCore
             {
                 progress += 100 / parts;
                 await Task.Delay(dt_msec);
-                if (cts.IsCancellationRequested == false)
-                {
-                    OnCountDown?.Invoke(this, progress);
-                }
+                ct.ThrowIfCancellationRequested();
+                OnCountDown?.Invoke(this, progress);
             }
 
-            if(cts.IsCancellationRequested == false)
-            {
-                OnTimeForMathTaskUp?.Invoke(this, null);
-                CurrentInARow = 0;
-            }
+            ct.ThrowIfCancellationRequested();
+
+            OnTimeForMathTaskUp?.Invoke(this, null);
+            CurrentInARow = 0;
+        }
+
+        public void Restart()
+        {
+            var mathTaskGeneratorFabric = new MathTaskGeneratorFabric();
+            _mathTaskGenerator = mathTaskGeneratorFabric.CreateGenerator(_gameSettingsModel);
+            MaxInARow = _gameSettingsModel.MaxResult;
+            CurrentInARow = 0;
         }
     }
 }

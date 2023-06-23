@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net6.0-windows</TargetFramework>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Remove="Images\Back.jpg" />
+    <None Remove="Images\icon_academy3.png" />
+    <None Remove="Images\icon_baby.png" />
+    <None Remove="Images\icon_school.png" />
+    <None Remove="Images\No.png" />
+    <None Remove="Images\Yes.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Prism.Unity" Version="8.1.97" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MathKidsCore\MathKidsCore.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Back.jpg">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Images\icon_academy3.png" />
+    <Resource Include="Images\icon_baby.png" />
+    <Resource Include="Images\icon_school.png" />
+    <Resource Include="Images\No.png" />
+    <Resource Include="Images\Yes.png" />
+  </ItemGroup>
+</Project>
