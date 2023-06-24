@@ -132,7 +132,7 @@ namespace PrismWpfUI.ViewModels
 
             if (_gameController.IsRunning)
             {
-                //_myPlayer.Stream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
+                _myPlayer.Stream = solvedCorrect ? Properties.Resources.Correct : Properties.Resources.Wrong3;
                 _myPlayer.Play();
 
                 Task.Delay(500)

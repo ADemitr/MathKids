@@ -1,6 +1,7 @@
 ﻿<UserControl x:Class="PrismWpfUI.Views.MainMenu"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ext="clr-namespace:PrismWpfUI.MurkupExtensions">
     <Grid Name="RootGrid">
         <Grid Name="Menu">
             <Grid.ColumnDefinitions>
@@ -29,10 +30,10 @@
                 </Rectangle>
             </StackPanel>
 
-            <Button Style="{StaticResource MenuButton}" Grid.Column="1" Grid.Row="1" Content="Играть"
+            <Button Style="{StaticResource MenuButton}" Grid.Column="1" Grid.Row="1" Content="{ext:Loc Play}"
                     Command="{Binding NaviagteCommand}" CommandParameter="GameUC"/>
 
-            <Button Style="{StaticResource MenuButton}" Grid.Column="1" Grid.Row="2" Content="Настройки" 
+            <Button Style="{StaticResource MenuButton}" Grid.Column="1" Grid.Row="2" Content="{ext:Loc Settings}"
                     Command="{Binding NaviagteCommand}" CommandParameter="GameSettingsUC"/>
         </Grid>
     </Grid>

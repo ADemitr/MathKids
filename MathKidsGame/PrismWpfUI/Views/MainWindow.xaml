@@ -3,9 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:prism="http://prismlibrary.com/"
         xmlns:rn="clr-namespace:PrismWpfUI.Core"
+        xmlns:ext="clr-namespace:PrismWpfUI.MurkupExtensions"
         xmlns:local="clr-namespace:PrismWpfUI.Views"
         prism:ViewModelLocator.AutoWireViewModel="True"
-        Title="Супер Счетовод" Height="500" Width="800" >
+        Title="{ext:Loc Title}" Height="500" Width="800" >
     <Grid>
         <ContentControl prism:RegionManager.RegionName="{x:Static rn:RegionNames.ContentRegion}" />
     </Grid>

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WinFormUI.Properties {
+namespace PrismWpfUI.Resources {
     using System;
     
     
@@ -19,17 +19,17 @@ namespace WinFormUI.Properties {
     // с помощью такого средства, как ResGen или Visual Studio.
     // Чтобы добавить или удалить член, измените файл .ResX и снова запустите ResGen
     // с параметром /str или перестройте свой проект VS.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    internal class Strings___Копировать {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
         private static global::System.Globalization.CultureInfo resourceCulture;
         
         [global::System.Diagnostics.CodeAnalysis.SuppressMessageAttribute("Microsoft.Performance", "CA1811:AvoidUncalledPrivateCode")]
-        internal Resources() {
+        internal Strings___Копировать() {
         }
         
         /// <summary>
@@ -39,7 +39,7 @@ namespace WinFormUI.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("WinFormUI.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("PrismWpfUI.Resources.Strings - Копировать", typeof(Strings___Копировать).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -61,20 +61,38 @@ namespace WinFormUI.Properties {
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        ///   Ищет локализованную строку, похожую на Correct!.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream Correct {
+        internal static string Correct {
             get {
-                return ResourceManager.GetStream("Correct", resourceCulture);
+                return ResourceManager.GetString("Correct", resourceCulture);
             }
         }
         
         /// <summary>
-        ///   Поиск локализованного ресурса типа System.IO.UnmanagedMemoryStream, аналогичного System.IO.MemoryStream.
+        ///   Ищет локализованную строку, похожую на Time is up!.
         /// </summary>
-        internal static System.IO.UnmanagedMemoryStream Wrong3 {
+        internal static string TimesUp {
             get {
-                return ResourceManager.GetStream("Wrong3", resourceCulture);
+                return ResourceManager.GetString("TimesUp", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Super Accountant.
+        /// </summary>
+        internal static string Title {
+            get {
+                return ResourceManager.GetString("Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Wrong!.
+        /// </summary>
+        internal static string Wrong {
+            get {
+                return ResourceManager.GetString("Wrong", resourceCulture);
             }
         }
     }

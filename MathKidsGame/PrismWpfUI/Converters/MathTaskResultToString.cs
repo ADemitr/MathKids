@@ -1,11 +1,8 @@
 ﻿using PrismWpfUI.Core;
-using PrismWpfUI.ViewModels;
 using System;
-using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Reflection;
+using System.Resources;
 using System.Windows.Data;
 
 namespace PrismWpfUI.Converters
@@ -20,20 +17,23 @@ namespace PrismWpfUI.Converters
                 throw new ArgumentNullException("Value must be of type MathTaskResult");
             }
 
+            ResourceManager rm = new ResourceManager("PrismWpfUI.Resources.Strings",
+                Assembly.GetExecutingAssembly());
+
             string output = "";
-            switch (result.Value) 
+            switch (result.Value)
             {
                 case MathTaskResult.Undefined:
                     output = string.Empty;
                     break;
                 case MathTaskResult.Correct:
-                    output = "Правильно!";
+                    output = rm.GetString("Correct");
                     break;
                 case MathTaskResult.Incorrect:
-                    output = "Ошибка!";
+                    output = rm.GetString("Wrong");
                     break;
                 case MathTaskResult.TimeIsUp:
-                    output = "Время вышло!";
+                    output = rm.GetString("TimesUp");
                     break;
                 default:
                     throw new ArgumentNullException("Unsupported value of MathTaskResult enum");
