@@ -2,8 +2,6 @@
 using Prism.Mvvm;
 using Prism.Regions;
 using PrismWpfUI.Core;
-using PrismWpfUI.Views;
-using System.Windows.Input;
 
 namespace PrismWpfUI.ViewModels
 {
@@ -11,13 +9,6 @@ namespace PrismWpfUI.ViewModels
     {
         private IRegionManager _regionManager;
         private IApplicationCommands _applicationCommands;
-
-        private string _title = "Prism Application";
-        public string Title
-        {
-            get { return _title; }
-            set { SetProperty(ref _title, value); }
-        }
 
         public MainWindowViewModel(IRegionManager regionManager, IApplicationCommands applicationCommands)
         {

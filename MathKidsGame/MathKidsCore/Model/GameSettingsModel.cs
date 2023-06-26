@@ -20,9 +20,9 @@ namespace MathKidsCore.Model
         {
             try
             {
-                IsolatedStorageFile f = IsolatedStorageFile.GetUserStoreForAssembly();
-                using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream("SuperAccountant.txt", FileMode.Create, f))
-                using (StreamWriter writer = new StreamWriter(stream))
+                var f = IsolatedStorageFile.GetUserStoreForAssembly();
+                using (var stream = new IsolatedStorageFileStream("SuperAccountant.txt", FileMode.Create, f))
+                using (var writer = new StreamWriter(stream))
                 {
                     BinaryFormatter b = new BinaryFormatter();
                     b.Serialize(stream, settings);
@@ -34,19 +34,18 @@ namespace MathKidsCore.Model
 
         public static void Load(GameSettingsModel gameSettings)
         {
-            GameSettingsModel loadedSettings = new GameSettingsModel();
+            var loadedSettings = new GameSettingsModel();
 
             try
             {
-                IsolatedStorageFile f = IsolatedStorageFile.GetUserStoreForAssembly();
-                using (IsolatedStorageFileStream stream = new IsolatedStorageFileStream("SuperAccountant.txt", FileMode.OpenOrCreate, f)) 
+                var f = IsolatedStorageFile.GetUserStoreForAssembly();
+                using (var stream = new IsolatedStorageFileStream("SuperAccountant.txt", FileMode.OpenOrCreate, f)) 
                 {
-                    BinaryFormatter b = new BinaryFormatter();
+                    var b = new BinaryFormatter();
                     loadedSettings = (GameSettingsModel)b.Deserialize(stream);
                 }
             }
-            catch(Exception ex)
-            { }
+            catch{ }
 
             foreach (PropertyInfo property in typeof(GameSettingsModel).GetProperties().Where(p => p.CanWrite))
             {

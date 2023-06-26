@@ -88,6 +88,15 @@ namespace PrismWpfUI.Resources {
         }
         
         /// <summary>
+        ///   Ищет локализованную строку, похожую на Difficulty.
+        /// </summary>
+        internal static string Difficulty {
+            get {
+                return ResourceManager.GetString("Difficulty", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Ищет локализованную строку, похожую на Baby                    .
         /// </summary>
         internal static string Level1 {
@@ -111,6 +120,15 @@ namespace PrismWpfUI.Resources {
         internal static string Level3 {
             get {
                 return ResourceManager.GetString("Level3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Ищет локализованную строку, похожую на Operations.
+        /// </summary>
+        internal static string Operations {
+            get {
+                return ResourceManager.GetString("Operations", resourceCulture);
             }
         }
         

@@ -126,6 +126,9 @@
   <data name="Current" xml:space="preserve">
     <value>Счет : {0}</value>
   </data>
+  <data name="Difficulty" xml:space="preserve">
+    <value>Сложность</value>
+  </data>
   <data name="Level1" xml:space="preserve">
     <value>Для самых маленьких   </value>
   </data>
@@ -134,6 +137,9 @@
   </data>
   <data name="Level3" xml:space="preserve">
     <value>Академик                      </value>
+  </data>
+  <data name="Operations" xml:space="preserve">
+    <value>Операции</value>
   </data>
   <data name="Play" xml:space="preserve">
     <value>Играть</value>

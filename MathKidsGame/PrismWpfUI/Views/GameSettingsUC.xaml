@@ -21,13 +21,13 @@
         </Grid.RowDefinitions>
 
         <Button Name="BackToMainMenu" Style="{StaticResource ButtonBack}"
-                 Command="{Binding BackCommand}"
+                Command="{Binding BackCommand}"
                 Grid.Column="0" Grid.Row="0" Grid.ColumnSpan="2" Grid.RowSpan="3" Margin="20 10 0 0" 
                 VerticalAlignment="Top"  HorizontalAlignment="Left">
             <Image Source="../Resources/Images/Back.jpg" />
         </Button>
 
-        <GroupBox  Grid.Row="2" Grid.Column="1"  Margin="8" Header="Операции" >
+        <GroupBox  Grid.Row="2" Grid.Column="1"  Margin="8" Header="{ext:Loc Operations}" >
             <GroupBox.Resources>
                 <Style TargetType="{x:Type CheckBox}">
                     <Setter Property="LayoutTransform">
@@ -87,7 +87,7 @@
                 <ColumnDefinition Width="auto"/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Content="Сложность: " Grid.Column="0" Margin="8"/>
+            <Label Content="{ext:Loc Difficulty}" Grid.Column="0" Margin="8"/>
             <ComboBox  Margin="8" Grid.Column="1" 
                    VerticalAlignment="Center" SelectedIndex="{Binding SelectedDificulty}">
                 <ListBoxItem>

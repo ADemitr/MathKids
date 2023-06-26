@@ -17,7 +17,7 @@
             </Grid.RowDefinitions>
 
             <StackPanel Grid.Row="0" Grid.Column="1" Margin=" 0 30 0 0">
-                <TextBox Name="userName" Text="User Name"  Margin="0 0 0 0" FontStyle="Italic" FontWeight="Bold"
+                <TextBox Name="userName" Text="{Binding UserName}"  FontStyle="Italic" FontWeight="Bold"
                          FontSize="36" BorderThickness="0" HorizontalAlignment="Center"/>
                 <Rectangle Width="{Binding ElementName=userName, Path=ActualWidth}" Opacity="0.25"
                            Height="{Binding ElementName=userName, Path=ActualHeight}">
